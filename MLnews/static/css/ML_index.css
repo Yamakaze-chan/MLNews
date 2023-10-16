@@ -1,0 +1,18 @@
+.topic_nav_container{
+    display: flex; 
+    overflow-y: scroll; 
+    white-space: nowrap;
+    height: 50px;
+    justify-content: space-between;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.topic_nav_container::-webkit-scrollbar {
+    display: none;
+  }
+
+.topic_item{
+    margin: auto 10px auto 10px;
+}
+  

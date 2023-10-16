@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="vi-VN">
+    <head>
+        <!--Page setup-->
+        <meta charset ="utf-8">
+        <!--Title of website-->
+        <title>EZML</title>
+        <meta name="description" content="A simple website about machine learning">
+        <meta name="author" content="Yamakaze">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--icon-->
+        <link rel="icon" type="image/png" href="image/icon.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--Stylesheet-->
+        <!-- Reset default styles and add support for google fonts -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
+        <!--Fonts-->
+        <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!--CSS-->
+        <link rel="stylesheet" href="../static/css/header.css" type="text/css">
+        <link rel="stylesheet" href="../static/css/home.css" type="text/css">
+        <link rel="stylesheet" href="../static/css/Change_gold.css" type="text/css">
+        <!--Script-->
+    </head>
+<body>
+    <div class="container">
+        <div class="gold" style="display: block; justify-content: center; grid-auto-flow: column;"> 
+            <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container" style="width: 100%; justify-content: center; margin: auto">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                {
+                "symbols": [
+                [
+                    "CAPITALCOM:GOLD|1D"
+                ]
+                ],
+                "chartOnly": false,
+                "autosize": true,
+                "width": 1500,
+                "height": 500,
+                "locale": "vi_VN",
+                "colorTheme": "light",
+                "autosize": false,
+                "showVolume": false,
+                "showMA": false,
+                "hideDateRanges": false,
+                "hideMarketStatus": false,
+                "hideSymbolLogo": false,
+                "scalePosition": "right",
+                "scaleMode": "Normal",
+                "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                "fontSize": "10",
+                "noTimeScale": false,
+                "valuesTracking": "1",
+                "changeMode": "price-and-percent",
+                "chartType": "area",
+                "maLineColor": "#2962FF",
+                "maLineWidth": 1,
+                "maLength": 9,
+                "lineWidth": 1,
+                "lineType": 0,
+                "dateRanges": [
+                "1d|1",
+                "1m|30",
+                "3m|60",
+                "12m|1D",
+                "60m|1W",
+                "all|1M"
+                ],
+                "lineColor": "rgba(255, 152, 0, 1)"
+            }
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
+            <!-- TradingView Widget BEGIN -->
+            <div class="tradingview-widget-container" style="width: 100%; justify-content: center; margin: auto">
+                <div class="tradingview-widget-container__widget"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                {
+                "symbols": [
+                [
+                    "CAPITALCOM:SILVER|1D"
+                ]
+                ],
+                "chartOnly": false,
+                "autosize": true,
+                "width": 1500,
+                "height": 500,
+                "locale": "vi_VN",
+                "colorTheme": "light",
+                "autosize": false,
+                "showVolume": false,
+                "showMA": false,
+                "hideDateRanges": false,
+                "hideMarketStatus": false,
+                "hideSymbolLogo": false,
+                "scalePosition": "right",
+                "scaleMode": "Normal",
+                "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                "fontSize": "10",
+                "noTimeScale": false,
+                "valuesTracking": "1",
+                "changeMode": "price-and-percent",
+                "chartType": "area",
+                "maLineColor": "#2962FF",
+                "maLineWidth": 1,
+                "maLength": 9,
+                "lineWidth": 1,
+                "lineType": 0,
+                "dateRanges": [
+                "1d|1",
+                "1m|30",
+                "3m|60",
+                "12m|1D",
+                "60m|1W",
+                "all|1M"
+                ],
+                "lineColor": "rgba(128, 128, 128, 1)"
+            }
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
+    </div>
+    <script src="../static/js/Price.js"></script>
+</body>

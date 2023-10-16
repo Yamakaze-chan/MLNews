@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi-VN">
+    <head>
+        <!--Page setup-->
+        <meta charset ="utf-8">
+        <!--Title of website-->
+        <title>EZML</title>
+        <meta name="description" content="A simple website about machine learning">
+        <meta name="author" content="Yamakaze">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--icon-->
+        <link rel="icon" type="image/png" href="image/icon.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!--Stylesheet-->
+        <!-- Reset default styles and add support for google fonts -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
+        <!--Fonts-->
+        <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!--CSS-->
+        <link rel="stylesheet" href="../static/css/header.css" type="text/css">
+        <link rel="stylesheet" href="../static/css/home.css" type="text/css">
+        <link rel="stylesheet" href="../static/css/Price.css" type="text/css">
+        <!--Script-->
+    </head>
+<body>
+    <header style="position: fixed; width: 100%; z-index: 21;">
+        <div class="search-box">
+            <div class="form-group"><input type="text" class="form-control"></div>
+        </div>
+        <div class="header">
+
+            <div class="logo">
+                <h2>Big ba da bum</h2>
+            </div>
+
+            <div class="header-menu">
+                <div class="responsive-menu"><i class="fa fa-bars"></i></div>
+                <ul class="responsive-sub-menu">
+                    <li><a href="./home">Trang chủ</a></li>
+                    <li><a href="./finance">Thị trường</a></li>
+                    <li><a href="#">Thông tin người dùng</a></li>
+                    <li><a href="#" class="menu-active menu-search"><i class="fa fa-search"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="head-social-link">
+                <ul>
+                    <li><a href="./LoginSignup.html">Log in / Sign up</a></li>
+                    <li><a href="#">Về nhóm</a></li>
+                </ul>
+            </div>
+</header>
+    <div class="container">
+        <div class="navigation"> 
+            <div class="nav_btn" id="nav_btn">
+                <button class="button active" onclick="active_nav_curr()">Ngoại tệ</button>
+                <button class="button" onclick="active_nav_gold()">Vàng</button>
+                <button class="button" onclick="active_nav_stock()">Chứng khoán</button>
+            </div>
+        </div>
+        <div class="content">
+            <iframe src="./Change_currency"  scrolling="no" id="frame_content"></iframe>
+        </div>
+            <!--iframe src="https://www.vietcombank.com.vn/KHCN/Cong-cu-tien-ich/Ty-gia"height="500" width="100%" title="Iframe Example"></iframe-->
+                <!-- Here a loader is created which
+                loads till response comes -->
+            <!--div class="d-flex justify-content-center">
+                <div class="spinner-border"
+                    role="status" id="loading">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <h1>Registered Employees</h1-->
+            <!-- table for showing data -->
+            <!--table id="currency"></table-->
+            
+    </body>
+        </div>
+    </div>
+    <script>
+        function active_nav_curr()
+            {
+            var header = document.getElementById("nav_btn");
+            var btns = header.getElementsByClassName("button");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+                });
+            }
+            document.getElementById("frame_content").src = "./Change_currency";
+            }
+
+            function active_nav_gold()
+            {
+            var header = document.getElementById("nav_btn");
+            var btns = header.getElementsByClassName("button");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+                });
+            }
+            document.getElementById("frame_content").src = "./Change_gold";
+            }
+
+            function active_nav_stock()
+            {
+            var header = document.getElementById("nav_btn");
+            var btns = header.getElementsByClassName("button");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+                });
+            }
+            document.getElementById("frame_content").src = "./Change_stock";
+            }
+    </script>
+    <script src="../static/js/header.js"></script>
+</body>
