@@ -68,22 +68,25 @@
 </header-->
 
 <header class="header">
-    <a href="" class="logo">CSS Nav</a>
+    <a href="" class="logo col-2">NEWS</a>
     <input class="menu-btn" type="checkbox" id="menu-btn" />
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-    <ul class="menu" style="">
-        <li><a href="./home">home</a></li>
-        <li><a href="./finance">Price</a></li>
-        <li><a href="./chatbot">Bot</a></li>
-        <li><a href="#">services</a></li>
-        <li><a href="#">clients</a></li>
-        <li><a href="#">testimonials</a></li>
-        <li><a href="#">blog</a></li>
-        <li><a href="#">contacts</a></li>
-        <li><form id="form_search" onsubmit="event.preventDefault();" role="search">
-          <input id="input_search" type="search" placeholder="Search..." autofocus required />
-          <button id="submit_search" type="submit">Go</button>    
+    <ul class="menu col-10" style="justify-content: center;">
+        <li class="col-2"><a href="./home">home</a></li>
+        <li class="col-2"><a href="./finance">Price</a></li>
+        <li class="col-2"><a href="./chatbot">Bot</a></li>
+        <li class="col-2"><a href="#">services</a></li>
+        <li class="col-2"><form id="form_search" onsubmit="event.preventDefault();" role="search">
+          <input id="input_search" type="search" placeholder="Search..." autofocus required style="width: 70%;"/>
+          <button id="submit_search" type="submit" onclick="Search_news()" style="width: 30%;">Go</button>    
         </form></li>
+        <li class="col-2" style="float: right;">
+          <div class="head-social-link">
+            <ul>
+                <li><a href="./LoginSignup.html">Log in / Sign up</a></li>
+            </ul>
+        </div>
+        </li>
     </ul>
     
     <!--Search-->
@@ -110,6 +113,9 @@
     <!--List of news-->
     <div class="container-sm list_news">
     </div>
+</div>
+
+<div class="searching_content" style="z-index: 20; display: flex; margin:0 auto 0px auto; top:100px; height: 1000px;" >
 </div>
 
     <!--Chatbot-->

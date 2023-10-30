@@ -5,7 +5,7 @@ background-color: #fff;
 box-shadow: 1px 1px 4px 0 rgba(0,0,0,.1);
 position: fixed;
 width: 100%;
-z-index: 21;
+z-index: 23;
 }
 
 .header ul {
@@ -17,6 +17,7 @@ background-color: #fff;
 }
 
 .header li a {
+text-align: center;
 display: block;
 padding: 20px 20px;
 border-right: 1px solid #f4f4f4;
@@ -110,9 +111,10 @@ transform: rotate(45deg);
 top: 0;
 }
 
-/* 48em = 768px */
+/* 48em = 768px 70*/
 
-@media (min-width: 48em) {
+@media (min-width: 40em) {
+
 .header li {
     float: left;
 }
@@ -137,20 +139,19 @@ top: 0;
     --color-light: #fff;
     --color-brand: #57bd84;
     --font-fam: "Lato", sans-serif;
-    --height: 5rem;
     --btn-width: 6rem;
     --bez: cubic-bezier(0, 0, 0.43, 1.49);
   }
 
   #form_search {
-    height: 60px;
+    height: 64px;
     position: relative;
     width: 100%;
     border-radius: var(--rad);
   }
   
-  #input_search, #submit_search {
-    height: var(--height);
+  #input_search, #submit_search { 
+    height: 64px;
     font-family: var(--font-fam);
     border: 0;
     color: var(--color-dark);
@@ -182,7 +183,7 @@ top: 0;
     background: var(--color-brand);
     border-radius: 0 var(--rad) var(--rad) 0;
   }
-  
+
   #input_search:not(:-moz-placeholder-shown) {
     border-radius: var(--rad) 0 0 var(--rad);
     width: calc(100% - var(--btn-width));

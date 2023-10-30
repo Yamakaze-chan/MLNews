@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi-VN">
+    <head>
+        <!--Page setup-->
+        <meta charset ="utf-8">
+        <!--Title of website-->
+        <title>EZML</title>
+        <meta name="description" content="A simple website about machine learning">
+        <meta name="author" content="Yamakaze">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--icon-->
+        <link rel="icon" type="image/png" href="image/icon.png">
+        <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <!--Stylesheet-->
+        <!-- Reset default styles and add support for google fonts -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
+        <!--Fonts-->
+        <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!--CSS-->
+        <link rel="stylesheet" href="../static/css/header.css" type="text/css">
+        <link rel="stylesheet" href="../static/css/home.css" type="text/css">
+        <link rel="stylesheet" href="../static/css/Chatbot.css" type="text/css">
+        <link rel="stylesheet" href="../static/css/ML_index.css" type="text/css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!--Script-->
+        <style>
+            
+        </style>
+    </head>
+<body>
+<header class="header">
+    <a href="" class="logo col-2">NEWS</a>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu col-10" style="justify-content: center;">
+        <li class="col-2"><a href="./home">home</a></li>
+        <li class="col-2"><a href="./finance">Price</a></li>
+        <li class="col-2"><a href="./chatbot">Bot</a></li>
+        <li class="col-2"><a href="#">services</a></li>
+        <li class="col-2"><form id="form_search" onsubmit="event.preventDefault();" role="search">
+          <input id="input_search" type="search" placeholder="Search..." autofocus required style="width: 70%;"/>
+          <button id="submit_search" type="submit" onclick="Search_news()" style="width: 30%;">Go</button>    
+        </form></li>
+        <li class="col-2" style="float: right;">
+          <div class="head-social-link">
+            <ul>
+                <li><a href="./LoginSignup.html">Log in / Sign up</a></li>
+            </ul>
+        </div>
+        </li>
+    </ul>
+    
+    <!--Search-->
+    
+  </header>
+
+<div class="" style="z-index: 20; display: flex; margin:0 auto 0px auto; top:100px; height: 1000px;" >
+    <div style=" width: 80%;display: flex; margin: auto; position: relative;" class="content">
+        <div class="searching_topic col-2" style="width: 100px;">
+            <div class="searching_topic_item" onclick="Show_topic_content('tin_moi')">Tin mới</div>
+            <div class="searching_topic_item" onclick="Show_topic_content('thoi_su')">Thời sự</div>
+            <div class="searching_topic_item" onclick="Show_topic_content('the_gioi')">Thế giới</div>
+            <div class="searching_topic_item" onclick="Show_topic_content('kinh_te')">Kinh tế</div>
+            <div class="searching_topic_item" onclick="Show_topic_content('doi_song')">Đời sống</div>
+            <div class="searching_topic_item" onclick="Show_topic_content('suc_khoe')">Sức khỏe</div>
+            <div class="searching_topic_item" onclick="Show_topic_content('giao_duc')">Giáo dục</div>
+            <div class="searching_topic_item" onclick="Show_topic_content('the_thao')">Thể thao</div>
+            <div class="searching_topic_item" onclick="Show_topic_content('du_lich')">Du lịch</div>
+            <div class="searching_topic_item" onclick="Show_topic_content('xe')">Xe</div>
+            <div class="searching_topic_item" onclick="Show_topic_content('giai_tri')">Giải trí</div>
+        </div>
+
+        <div class="searching_content col-10 list_news" style="background-color: aqua; margin-top:0px; width: calc(95% - 100px); min-width: 300px;">
+    a
+        </div>
+    </div>
+</div>
+
+    <!--Chatbot-->
+    <div class="chatbot_container" style="right: 0px; bottom: 30px; position: fixed;z-index: 22; max-width: 100px;max-height: 100px;">
+        
+        <img src="../static/img/test1.jpg" width="100" onclick="openForm()">
+
+        <div class="popup_chat" id="popup_chat" style=" display: none; position: fixed; bottom: 0px; right:30px; width: 300px;">
+            <!--iframe src="../templates/Chatbot.html" height="500px" width="500px"></iframe-->
+            <section class="msger" style="">
+                <header class="msger-header">
+                  <div class="msger-header-title">
+                    <i class="fas fa-bug"></i> Chatbot <i class="fas fa-bug"></i>
+                    <i class="fa-solid fa-xmark" onclick="closeForm()" style="float: right;"></i>
+                  </div>
+                </header>
+            
+                <main class="msger-chat">
+                  <div class="msg left-msg">
+                    <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+            
+                    <div class="msg-bubble">
+                      <div class="msg-info">
+                        <div class="msg-info-name">Chatbot</div>
+                        <div class="msg-info-time">12:45</div>
+                      </div>
+            
+                      <div class="msg-text">
+                        Hi, welcome to ChatBot! Go ahead and send me a message. 😄
+                      </div>
+                    </div>
+                  </div>
+            
+                </main>
+            
+                <form id="msger-chat" class="msger-inputarea" method="GET">
+                  {% csrf_token %}
+                  <input type="text" class="msger-input" id="BotContent" name="BotContent" placeholder="Enter your message...">
+                  <input type="submit" class="msger-send-btn"></input>
+                </form>
+                <div id="alert" style="display:none;"></div>
+              </section>
+          </div>
+
+    </div>
+</body>
+<script src="../static/js/header.js"></script>
+<script src="../static/js/Searching.js"></script>
+</html>

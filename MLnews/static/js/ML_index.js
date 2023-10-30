@@ -26,10 +26,8 @@ function News(title, description,img, img_cnt, pubdate, guid)
   this.pubdate = pubdate;
 }
 
-
-//Get data
-async function Load_content(URL){
-  document.querySelector('.list_news').innerHTML = "";
+async function make_json(URL)
+{
   const datas = await Promise.all(URL.map(url => fetch(url).then((response) => response.text().then((str) => new window.DOMParser().parseFromString(str, 'text/xml')))))
   data_json = [];
   news_json = new Array();
@@ -85,6 +83,13 @@ async function Load_content(URL){
       }
     );
     }
+    return data_json;
+}
+
+//Get data
+function Load_content(URL){
+  document.querySelector('.list_news').innerHTML = "";
+  make_json(URL).then((data_json) => {
     for(let json_item=0; json_item< data_json.length; json_item++)
     {
       let datetime = new Date(data_json[json_item].Publish_Date);
@@ -127,7 +132,7 @@ async function Load_content(URL){
         </div>   
         `;
       document.querySelector('.list_news').insertAdjacentHTML('beforeend', html);
-    }
+    }})
   }
 
 
@@ -202,4 +207,80 @@ function openForm() {
 
 function closeForm() {
   document.getElementById("popup_chat").style.display = "none";
+}
+
+function Load_content_searching(URL, keyword){
+  document.querySelector('.searching_content').innerHTML = "";
+  make_json(URL).then((data_json) => {
+  data_json = Filter_search(data_json, keyword);
+    for(let json_item=0; json_item< data_json.length; json_item++)
+    {
+      let datetime = new Date(data_json[json_item].Publish_Date);
+      console.log(typeof(datetime));
+      let dateFormat = datetime.getHours() + ":" + (datetime.getMinutes() < 10 ? '0' : '') + datetime.getMinutes() + ", "+ datetime.getDate() + "/" +datetime.getMonth() + "/" +datetime.getFullYear();
+        let html =`
+        <div class="row news">
+            <div class="col-4 news_assets">
+                <div class="col news_img">
+                    <a href=${data_json[json_item].Guid}>
+                        <img src="${data_json[json_item].Image}">
+                        </a>
+                    </div>
+                <div class="col news_icons">
+                    <ul class="row list_icons">
+                        <li class="col icon" ><a href="./LoginSignup.html"><i class="fa-regular fa-thumbs-up fa-xl"></i></a></li>
+                        <!--li class="col icon"><a href="./LoginSignup.html"><i class="fa-solid fa-thumbs-up fa-xl"></i></i></a></li-->
+                        <!--li class="col icon"><a href="./LoginSignup.html"><i class="fa-solid fa-thumbs-down fa-xl"></i></i></a></li-->
+                        <li class="col icon" ><a href="./LoginSignup.html"><i class="fa-regular fa-thumbs-down fa-xl"></i></i></a></li>
+                        <li class="col icon" ><a href="./LoginSignup.html"><i class="fa-solid fa-comment fa-xl"></i></a></li>
+                        <li class="col icon" ><a href="./LoginSignup.html"><i class="fa-solid fa-share fa-xl"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-8 news_txt">
+                <div class="col">
+                    <text class="col news_header"><a href=${data_json[json_item].Guid}>${data_json[json_item].Title}</a></text>
+                </div>
+                <div class="col">
+                    <text class="col news_author">${dateFormat}</text>
+                </div>
+                <div class="col">
+                    <text class="col news_content">${data_json[json_item].Image_content}</text>
+                </div>
+                <div class="col">
+                    <div class="read_more"><button class="up"><a href=${data_json[json_item].Guid}><text>Đọc tiếp</text><i class="fa-solid fa-arrow-right fa-sm"></i></button></a></div>
+                    <div class="watch_later"><button class="up"><text >Xem sau</text><i class="fa-regular fa-clock fa-sm" ></i></button></div>
+                </div>
+            </div>
+        </div>   
+        `;
+      document.querySelector('.searching_content').insertAdjacentHTML('beforeend', html);
+    }})
+  }
+
+//Filter_search
+function Search_news(){
+  var search_value = document.querySelector("#input_search").value;
+  document.querySelector('.content').innerHTML = "";
+  document.querySelector('.searching_content').innerHTML = `
+  <div style=" width: 80%;display: flex; margin: auto; position: relative;" class="content">
+      <div class="searching_topic col-2" style="width: 100px;">
+          <div class="searching_topic_item" onclick="Show_topic_content('tin_moi')">Tin mới</div>
+          <div class="searching_topic_item" onclick="Show_topic_content('thoi_su')">Thời sự</div>
+          <div class="searching_topic_item" onclick="Show_topic_content('the_gioi')">Thế giới</div>
+          <div class="searching_topic_item" onclick="Show_topic_content('kinh_te')">Kinh tế</div>
+          <div class="searching_topic_item" onclick="Show_topic_content('doi_song')">Đời sống</div>
+          <div class="searching_topic_item" onclick="Show_topic_content('suc_khoe')">Sức khỏe</div>
+          <div class="searching_topic_item" onclick="Show_topic_content('giao_duc')">Giáo dục</div>
+          <div class="searching_topic_item" onclick="Show_topic_content('the_thao')">Thể thao</div>
+          <div class="searching_topic_item" onclick="Show_topic_content('du_lich')">Du lịch</div>
+          <div class="searching_topic_item" onclick="Show_topic_content('xe')">Xe</div>
+          <div class="searching_topic_item" onclick="Show_topic_content('giai_tri')">Giải trí</div>
+      </div>
+
+      <div class="searching_content col-10 list_news" style="background-color: aqua; margin-top:0px; width: calc(95% - 100px); min-width: 300px;">
+  a
+      </div>
+  </div>
+  `;
 }
