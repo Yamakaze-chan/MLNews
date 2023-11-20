@@ -40,3 +40,6 @@ let mainF = (e) => {
 }
 
 window.addEventListener("load", mainF);
+
+function login(){};
+function signup(){mainF}

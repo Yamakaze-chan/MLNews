@@ -50,7 +50,7 @@ async function make_json(URL)
           .replaceAll('\n', '')
           .replaceAll('\t', '')
           .trim(); 
-          let img = description_txt.substring(description_txt.indexOf("src=")+5).substring(0,description_txt.substring(description_txt.indexOf("src=")+5).indexOf(">")-1);
+          let img = description_txt.substring(description_txt.indexOf("src=")+5).substring(0,description_txt.substring(description_txt.indexOf("src=")+5).indexOf(">")-2);
           let img_content = description_txt.substring(description_txt.indexOf("</a>")+4, description_txt.length-1).replace("</br>", "");
           //console.log(img_content);
         
@@ -94,7 +94,7 @@ function Load_content(URL){
     {
       let datetime = new Date(data_json[json_item].Publish_Date);
       console.log(typeof(datetime));
-      let dateFormat = datetime.getHours() + ":" + (datetime.getMinutes() < 10 ? '0' : '') + datetime.getMinutes() + ", "+ datetime.getDate() + "/" +datetime.getMonth() + "/" +datetime.getFullYear();
+      let dateFormat = datetime.getHours() + ":" + (datetime.getMinutes() < 10 ? '0' : '') + datetime.getMinutes() + " "+ datetime.getDate() + "/" +datetime.getMonth() + "/" +datetime.getFullYear();
         let html =`
         <div class="row news">
             <div class="col-4 news_assets">
@@ -126,7 +126,7 @@ function Load_content(URL){
                 </div>
                 <div class="col">
                     <div class="read_more"><button class="up"><a href=${data_json[json_item].Guid}><text>Đọc tiếp</text><i class="fa-solid fa-arrow-right fa-sm"></i></button></a></div>
-                    <div class="watch_later"><button class="up"><text >Xem sau</text><i class="fa-regular fa-clock fa-sm" ></i></button></div>
+                    <div class="watch_later"><button class="up" onclick="Watch_later(${"\'" + data_json[json_item].Guid.toString() + "\'"}, ${"\'" + data_json[json_item].Image_content.toString().replaceAll("\'","\\'") + "\'"}, ${"\'" + data_json[json_item].Title.toString().replaceAll("\'","\\'") + "\'"}, ${"\'" + dateFormat.toString() + "\'"}, ${"\'" + data_json[json_item].Image.toString() + "\'"})"><text >Xem sau</text><i class="fa-regular fa-clock fa-sm" ></i></button></div>
                 </div>
             </div>
         </div>   
@@ -249,7 +249,7 @@ function Load_content_searching(URL, keyword){
                 </div>
                 <div class="col">
                     <div class="read_more"><button class="up"><a href=${data_json[json_item].Guid}><text>Đọc tiếp</text><i class="fa-solid fa-arrow-right fa-sm"></i></button></a></div>
-                    <div class="watch_later"><button class="up"><text >Xem sau</text><i class="fa-regular fa-clock fa-sm" ></i></button></div>
+                    <div class="watch_later"><button class="up" onclick="Watch_later(${data_json[json_item].Guid.toString().replace(':','\:')}, ${string(data_json[json_item].Image)}, ${data_json[json_item].Image_content}, ${data_json[json_item].Title}, ${dateFormat})"><text >Xem sau</text><i class="fa-regular fa-clock fa-sm" ></i></button></div>
                 </div>
             </div>
         </div>   
