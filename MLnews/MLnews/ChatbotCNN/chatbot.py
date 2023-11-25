@@ -13,6 +13,7 @@ import requests
 #from googlesearch import *
 from nltk.stem import WordNetLemmatizer
 from keras.models import load_model
+from ..pythonvit5.sum_txt import sum_txt
 
 lemmatizer = WordNetLemmatizer()
 model = load_model('MLnews\ChatbotCNN\chatbot_model')
@@ -185,6 +186,5 @@ def get_response(return_list,intents_json, user_text):
 def response(text):
     return_list=predict_class(text,model)
     response=get_response(return_list,intents, text)
-    return response
-
-print(response("Xin chào"))
+    temp = sum_txt(text)
+    return temp
