@@ -80,6 +80,56 @@ function Filter_search(json_data, keyword){
     return json_filter_data;
 }
 
+function Show_search_content(content, keyword){
+  let URL;
+  switch (content) {
+    case "tin_moi":
+      URL = [`https://thanhnien.vn/rss/home.rss`];
+      Load_content_searching(URL, keyword);
+      break;
+    case "thoi_su":
+      URL = [`https://thanhnien.vn/rss/thoi-su.rss`];
+      Load_content_searching(URL, keyword);
+      break;
+    case "the_gioi":
+      URL = [`https://thanhnien.vn/rss/the-gioi.rss`];
+      Load_content_searching(URL, keyword);
+      break;
+    case "kinh_te":
+      URL = [`https://thanhnien.vn/rss/kinh-te.rss`];
+      Load_content_searching(URL, keyword);
+      break;
+    case "doi_song":
+      URL = [`https://thanhnien.vn/rss/doi-song.rss`];
+      Load_content_searching(URL, keyword);
+      break;
+    case "suc_khoe":
+      URL = [`https://thanhnien.vn/rss/suc-khoe.rss`];
+      Load_content_searching(URL, keyword);
+      break;
+    case "giao_duc":
+      URL = [`https://thanhnien.vn/rss/giao-duc.rss`];
+      Load_content_searching(URL, keyword);
+      break
+    case "the_thao":
+      URL = [`https://thanhnien.vn/rss/the-thao.rss`];
+      Load_content_searching(URL, keyword);
+      break
+    case "du_lich":
+      URL = [`https://thanhnien.vn/rss/du-lich.rss`];
+      Load_content_searching(URL, keyword);
+      break
+    case "xe":
+      URL = [`https://thanhnien.vn/rss/xe.rss`];
+      Load_content_searching(URL, keyword);
+      break
+    case "giai_tri":
+      URL = [`https://thanhnien.vn/rss/giai-tri.rss`];
+      Load_content_searching(URL, keyword);
+      break
+  }
+}
+
 //Get data
 function Load_content_searching(URL, keyword){
     document.querySelector('.searching_content').innerHTML = "";
@@ -132,5 +182,5 @@ function Load_content_searching(URL, keyword){
 
     addEventListener("load", (event) => {
         let URL = ['https://vnexpress.net/rss/tin-moi-nhat.rss'];
-        Load_content_searching(URL, "");
+        Load_content_searching(URL, "FPT");
       });
