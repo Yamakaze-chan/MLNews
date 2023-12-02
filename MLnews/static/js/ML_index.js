@@ -328,19 +328,18 @@ function Show_search_content(content, keyword){
 //Filter_search
 function Search_news(content = 'tin_moi'){
   document.querySelector('.content').innerHTML = `
-  <div style=" width: 80%;display: flex; margin: auto; position: relative;" class="content">
-      <div class="searching_topic col-2" style="width: 100px;">
-          <div class="searching_topic_item" onclick="Search_news('tin_moi')">Tin mới</div>
-          <div class="searching_topic_item" onclick="Search_news('thoi_su')">Thời sự</div>
-          <div class="searching_topic_item" onclick="Search_news('the_gioi')">Thế giới</div>
-          <div class="searching_topic_item" onclick="Search_news('kinh_te')">Kinh tế</div>
-          <div class="searching_topic_item" onclick="Search_news('doi_song')">Đời sống</div>
-          <div class="searching_topic_item" onclick="Search_news('suc_khoe')">Sức khỏe</div>
-          <div class="searching_topic_item" onclick="Search_news('giao_duc')">Giáo dục</div>
-          <div class="searching_topic_item" onclick="Search_news('the_thao')">Thể thao</div>
-          <div class="searching_topic_item" onclick="Search_news('du_lich')">Du lịch</div>
-          <div class="searching_topic_item" onclick="Search_news('xe')">Xe</div>
-          <div class="searching_topic_item" onclick="Search_news('giai_tri')">Giải trí</div>
+    <div class="topic_nav_container" id="topic_nav_container">
+        <div class="topic_item" onclick="Search_news('tin_moi')">Tin mới</div>
+        <div class="topic_item" onclick="Search_news('thoi_su')">Thời sự</div>
+        <div class="topic_item" onclick="Search_news('the_gioi')">Thế giới</div>
+        <div class="topic_item" onclick="Search_news('kinh_te')">Kinh tế</div>
+        <div class="topic_item" onclick="Search_news('doi_song')">Đời sống</div>
+        <div class="topic_item" onclick="Search_news('suc_khoe')">Sức khỏe</div>
+        <div class="topic_item" onclick="Search_news('giao_duc')">Giáo dục</div>
+        <div class="topic_item" onclick="Search_news('the_thao')">Thể thao</div>
+        <div class="topic_item" onclick="Search_news('du_lich')">Du lịch</div>
+        <div class="topic_item" onclick="Search_news('xe')">Xe</div>
+        <div class="topic_item" onclick="Search_news('giai_tri')">Giải trí</div>
       </div>
 
       <div id="search_content" class="searching_content col-10 list_news" style="background-color: aqua; margin-top:0px; width: calc(95% - 100px); min-width: 300px;">
