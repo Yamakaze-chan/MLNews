@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
+from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 import json
 from MLnews.models import BotResponse
 from MLnews.pythonvit5.sum_txt import sum_txt, getAuthor, getDate, getKeyword, getTopimg, getTopvid
@@ -29,6 +31,12 @@ def changegold(request):
 
 def changestock(request):
     return render(request, 'Change_stock.html')
+
+def dashboard(request):
+    return render(request, 'dashboard.html')
+
+def get_all_user_info(request):
+    return render(request, 'Get_all_user_info.html')
 
 
 def bot_response(request):
@@ -162,3 +170,33 @@ def Remove_watch_later(request):
             print("Failed to delete record from sqlite table", error)
             return JsonResponse({'success': False})
     return 
+
+def get_all_user(request):
+    if request.method == "GET":
+        User = get_user_model()
+        all_users = User.objects.values()
+        list_user = []
+        for i in all_users:
+            list_user.append(json.dumps({'id':i['id'], 
+                              'username':i['username'], 
+                              'First name': i['first_name'], 
+                              'Last name': i['last_name'], 
+                              'Last login': i['last_login'].strftime("%m/%d/%Y, %H:%M:%S"), 
+                              'admin':i['is_staff']}))
+        return JsonResponse({'all_user': json.dumps(list_user)})
+
+def del_user(request):    
+    if request.method == "GET":
+        username = request.GET.get('username')
+        print(username)
+        try:
+            u = User.objects.get(username = username)
+            u.delete()
+        except User.DoesNotExist:
+            return JsonResponse({'err': "User not found"})
+
+        except Exception as e: 
+            return JsonResponse({'err': e})
+
+        return render(request, 'Get_all_user_info.html')
+        

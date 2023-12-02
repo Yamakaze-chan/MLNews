@@ -30,30 +30,66 @@
     </head>
 <body>
     <header class="header">
-        <a href="" class="logo col-2">NEWS</a>
-        <input class="menu-btn" type="checkbox" id="menu-btn" />
-        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-        <ul class="menu col-10" style="justify-content: center;">
-            <li class="col-2"><a href="./home">home</a></li>
-            <li class="col-2"><a href="./finance">Price</a></li>
-            <li class="col-2"><a href="./chatbot">Bot</a></li>
-            <li class="col-2"><a href="#">services</a></li>
-            <li class="col-2"><form id="form_search" onsubmit="event.preventDefault();" role="search">
-              <input id="input_search" type="search" placeholder="Search..." autofocus required style="width: 70%;"/>
-              <button id="submit_search" type="submit" onclick="Search_news()" style="width: 30%;">Go</button>    
-            </form></li>
-            <li class="col-2" style="float: right;">
-              <div class="head-social-link">
-                <ul>
-                    <li><a href="./LoginSignup.html">Log in / Sign up</a></li>
-                </ul>
+        <nav>
+            <div class="logo">
+                <img src="../static/img/logo.png" alt="Logo Image" height="100%">
             </div>
-            </li>
-        </ul>
-        
-        <!--Search-->
-        
-      </header>
+            <div class="hamburger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="home">Trang chủ</a></li>
+                <li><a href="finance">Thị trường</a></li>
+                <li><a href="chatbot">Bot</a></li>
+                <li><a href="show_watch_later">Xem sau</a></li>
+                <li><a href="#">Thông tin cá nhân</a></li>
+                <li><div class="wrap">
+                  <div class="search" style="display: flex;">
+                     <input type="text" class="searchTerm" id="input_search" placeholder="Tìm kiếm">
+                     <button type="submit" class="searchButton" id="submit_search" onclick="Search_news()"><i class="fa fa-search"></i></button>
+                  </div>
+                  </div></li>
+                {% if request.user.is_authenticated %}
+                <li>Hello, {{ request.user.username }}</li>
+                <li><a class="login-button" href="{% url 'logout' %}">Đăng xuất</a></li>
+                {% else %}
+                <li><a class="login-button" href="{% url 'login' %}">Login</a></li>
+                <li><a class="join-button" href="{% url 'signup' %}">Sign up</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+      
+          <!-- <a href="" class="logo col-2">NEWS</a>
+          <input class="menu-btn" type="checkbox" id="menu-btn" />
+          <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+          <ul class="menu col-10" style="justify-content: center;">
+              <li class="col-2"><a href="home">home</a></li>
+              <li class="col-2"><a href="finance">Price</a></li>
+              <li class="col-2"><a href="chatbot">Bot</a></li>
+              <li class="col-2"><a href="show_watch_later">Watch later</a></li>
+              <li class="col-2"><form id="form_search" onsubmit="event.preventDefault();" role="search">
+                <input id="input_search" type="search" placeholder="Search..." autofocus required style="width: 70%;"/>
+                <button id="submit_search" type="submit" onclick="Search_news()" style="width: 30%;">Go</button>    
+              </form></li>
+              
+              <li class="col-2" style="float: right;">
+                <div class="head-social-link row">
+                  {% if request.user.is_authenticated %}
+                  <p class = "col">{{ request.user.username }}</p>
+                  <a class = "col" href="{% url 'logout' %}">Logout</a>
+                  {% else %}
+                  <a class = "col" href="{% url 'login' %}">Login</a>
+                  <a class = "col" href="{% url 'signup' %}">Signup</a>
+              </div>
+              </li>
+              {% endif %}
+          </ul>
+          
+          Search -->
+          
+        </header>
     <div class="page_container">
         <div class="navigation"> 
             <div class="nav_btn" id="nav_btn">
