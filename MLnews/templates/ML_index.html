@@ -129,6 +129,11 @@
     
   </header>
 
+<!--Overlay sum_text-->
+<div id="overlay" onclick="off()">
+  <div id="text"></div>
+</div>
+
 
 <div class="content" style="z-index: 1;">
     <!--Topic navigation-->
@@ -313,6 +318,50 @@ function Watch_later(guid, img_cnt, title, date, img)
         success: function (data) {
             //any process in data
             alert("successfull")
+        },
+        failure: function () {
+            alert("failure");
+        }
+    });
+}
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+async function query(data) {
+	const response = await fetch(
+		"https://api-inference.huggingface.co/models/VietAI/vit5-large-vietnews-summarization",
+		{
+			headers: { Authorization: "Bearer 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" },
+			method: "POST",
+			body: JSON.stringify(data),
+		}
+	);
+	const result = await response.json();
+	return result;
+}
+
+function sum_txt(url)
+{
+  $.ajax({
+        type: "GET",
+        url: "{% url 'sum_text' %}",
+        data: {
+            "url": url
+        },
+        dataType: "json",
+        success: function (data) {
+            //any process in data
+            console.log(data)
+            query({"inputs": data['sum_text']}).then((response) => {
+              console.log(response[0]['summary_text']);
+              var summary_para = response[0]['summary_text'];
+              $('#text').text(summary_para);
+              document.getElementById("overlay").style.display = "block";
+            });
+            //alert("successfull");
+            
         },
         failure: function () {
             alert("failure");

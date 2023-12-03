@@ -309,7 +309,7 @@ for(var i = 0; i<JSON_1.length; i++)
                 </div>
                 <div class="col">
                     <div class="read_more"><button class="up"><a href=${json_data.guid}><text>Đọc tiếp</text><i class="fa-solid fa-arrow-right fa-sm"></i></button></a></div>
-                    <div class="watch_later"><button class="up" onclick="remove_watch_later(\'${json_data.guid}\')"><text >Xóa xem sau</text><i class="fa-regular fa-clock fa-sm" ></i></button></div>
+                    <div class="watch_later"><button class="up" onclick="remove_watch_later(\'${json_data.guid}\',\'${request.user.username}')"><text >Xóa xem sau</text><i class="fa-regular fa-clock fa-sm" ></i></button></div>
                 </div>
             </div>
         </div>   
@@ -321,7 +321,7 @@ for(var i = 0; i<JSON_1.length; i++)
   </script>
   <script>
     function remove_watch_later(guid){
-      console.log("aa")
+      console.log("aa");
     $.ajax({
         type: "GET",
         url: "{% url 'remove_watch_later' %}",

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 import json
@@ -12,6 +12,9 @@ from MLnews.forms import LoginForm, RegisterForm, Watch_later
 import datetime
 import sqlite3
 from sqlite3 import Error
+from newspaper import Config
+from newspaper import Article
+import requests
 
 def chatbot(request):
     return render(request, 'Chatbot.html')
@@ -104,24 +107,32 @@ def user_logout(request):
 # Watch later
 def watch_later(request):
     if request.method == "POST":
-        #print(request.POST)
-        form = Watch_later({'title': request.POST.get('title'),
-                            'guid': request.POST.get('guid'),
-                            'image': request.POST.get('image'),
-                            'image_content': request.POST.get('image_content'),
-                            'published_date': datetime.datetime.strptime(request.POST.get('published_date'),"%H:%M %d/%m/%Y"),
-                            'save_account': request.user})
-        #print(form)
-        if form.is_valid():
-            form.save()
-            return JsonResponse({'success': True})
+        conn = sqlite3.connect(r"C:\Users\ACER\AI\sum_txt\MLnews\db.sqlite3")
+        guid = str(request.POST.get('guid'))
+        print((guid))
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM 'MLnews_watch_later_info' WHERE save_account_id=" + str(request.user.id) +" AND guid =\"" + guid + "\"")
+        rows = cur.fetchall()
+        if(len(rows) == 0):
+            #print(request.POST)
+            form = Watch_later({'title': request.POST.get('title'),
+                                'guid': request.POST.get('guid'),
+                                'image': request.POST.get('image'),
+                                'image_content': request.POST.get('image_content'),
+                                'published_date': datetime.datetime.strptime(request.POST.get('published_date'),"%H:%M %d/%m/%Y"),
+                                'save_account': request.user})
+            #print(form)
+            if form.is_valid():
+                form.save()
+                return JsonResponse({'success': True})
+        conn.close()
     return render(request, 'ML_index.html')
 
 def Show_watch_later(request):
     if request.method == "GET":
         conn = sqlite3.connect(r"C:\Users\ACER\AI\sum_txt\MLnews\db.sqlite3")
         cur = conn.cursor()
-        cur.execute("SELECT * FROM 'MLnews_watch_later_info'")
+        cur.execute("SELECT * FROM 'MLnews_watch_later_info' WHERE save_account_id=" + str(request.user.id))
         return_JSON = []
         rows = cur.fetchall()
 
@@ -155,7 +166,7 @@ def Remove_watch_later(request):
             print("Connected to SQLite")
 
             # Deleting single record now
-            sql_delete_query = "DELETE from 'MLnews_watch_later_info' where guid = \'" + str(guid) + "\'"
+            sql_delete_query = "DELETE from 'MLnews_watch_later_info' where guid = \'" + str(guid) + "\' AND save_account_id=" + str(request.user.id)
             cursor.execute(sql_delete_query)
             sqliteConnection.commit()
             print("Record deleted successfully ")
@@ -188,7 +199,6 @@ def get_all_user(request):
 def del_user(request):    
     if request.method == "GET":
         username = request.GET.get('username')
-        print(username)
         try:
             u = User.objects.get(username = username)
             u.delete()
@@ -199,4 +209,20 @@ def del_user(request):
             return JsonResponse({'err': e})
 
         return render(request, 'Get_all_user_info.html')
+    
+def sum_txt(request):
+    if request.method == "GET":
+        url = request.GET.get('url')
+        USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36' #Change yours
+        config = Config()
+        config.browser_user_agent = USER_AGENT
+        config.request_timeout = 10
+        article = Article(url, config=config)
+        article.download()
+        article.parse()
+        # the replace is used to remove newlines
+        article_text = article.text.replace('\n', ' ')
+        #print(article_text)
+        return JsonResponse({"sum_text":article_text})
+    return JsonResponse({"sum_text":""})
         

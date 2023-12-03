@@ -56,7 +56,7 @@ async function make_json(URL)
             img = img.slice(0, -1);
           }
           let img_content = description_txt.substring(description_txt.indexOf("</a>")+4, description_txt.length-1).replace("</br>", "");
-          console.log(img);
+          //console.log(img);
         
           let pubDate = pubdate[i].textContent
           .replaceAll('\n', '')
@@ -130,6 +130,7 @@ function Load_content(URL){
                 </div>
                 <div class="col">
                     <div class="read_more"><button class="up"><a href=${data_json[json_item].Guid}><text>Đọc tiếp</text><i class="fa-solid fa-arrow-right fa-sm"></i></button></a></div>
+                    <div class="read_more"><button class="up" onclick="sum_txt(${"\'" + data_json[json_item].Guid+"\'"})"><text>Tóm tắt nội dung</text></button></div>
                     <div class="watch_later"><button class="up" onclick="Watch_later(${"\'" + data_json[json_item].Guid.toString() + "\'"}, ${"\'" + data_json[json_item].Image_content.toString().replaceAll("\'","\\'") + "\'"}, ${"\'" + data_json[json_item].Title.toString().replaceAll("\'","\\'") + "\'"}, ${"\'" + dateFormat.toString() + "\'"}, ${"\'" + data_json[json_item].Image.toString() + "\'"})"><text >Xem sau</text><i class="fa-regular fa-clock fa-sm" ></i></button></div>
                 </div>
             </div>
@@ -254,6 +255,7 @@ function Load_content_searching(URL, keyword){
                 </div>
                 <div class="col">
                     <div class="read_more"><button class="up"><a href=${data_json[json_item].Guid}><text>Đọc tiếp</text><i class="fa-solid fa-arrow-right fa-sm"></i></button></a></div>
+                    <div class="read_more"><button class="up" onclick="sum_txt(${"\"" + data_json[json_item].Guid+"\""})"><text>Tóm tắt nội dung</text></button></div>
                     <div class="watch_later"><button class="up" onclick="Watch_later(${"\'" + data_json[json_item].Guid.toString() + "\'"}, ${"\'" + data_json[json_item].Image_content.toString().replaceAll("\'","\\'") + "\'"}, ${"\'" + data_json[json_item].Title.toString().replaceAll("\'","\\'") + "\'"}, ${"\'" + dateFormat.toString() + "\'"}, ${"\'" + data_json[json_item].Image.toString() + "\'"})"><text >Xem sau</text><i class="fa-regular fa-clock fa-sm" ></i></button></div>
                 </div>
             </div>
