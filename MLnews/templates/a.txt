@@ -10,4 +10,21 @@ Thành phần của quan hệ pháp luật
     + Muốn trở thành chủ thể thì phải có năng lực chủ thể (1. Năng lực pháp luật, 2.Năng lực hành vi)
     + 
 - Khách thể
+    + Là những lợi ích các bên tham gia quan hệ pháp luật mong muốn đạt được khi tham gia quan hệ pháp luật
 - Nội dung
+    + Quyền
+    + Nghĩa vụ
+    -> Quyền của bên này là nghĩa vụ của bên kia
+
+Hành vi trái pháp luật có phải hành vi vi phạm pháp luật không? ->Trái pháp luật là không phải vi phạm, mà vi phạm là trái. VÌ trái chỉ thỏa mãn 1 trong 4 tiêu chí vi phạm pháp luật
+Hành vi nguy hiểm là hành vi để lại hậu quả nguy hiểm cho xã hội, xâm phạm đến các quan hệ xã hội khác
+
+Vi phạm PL phải đủ 4 tiêu chí:
+    + Khách quan: Biểu hiện ra bên ngoài của VPPL
+    + Chủ quan: Biểu hiện tâm lý bên trong của của chủ thể VPPL
+
+
+VD: A lẻn vào nhà B ăn trộm, phát hiện có vàng ở đầu giường nên lấy. Sau khi lấy thì B phát hiện đuôiỉ theo đánh A. trong lúc giằng co thì A đánh B rồi bỏ chạy ra sông. B về nhà rút kiếm đuổi theo A, chém A làm A bị thương. Hỏi lỗi của B là lỗi gì?
+VD: Chị A là nhân viên 1 quán phở, quán phở có 1 cái gờ. Chị A bưng phở, bị vấp gờ làm đổ lên người khách làm khách bị bỏng. Hỏi chị A lỗi gì?
+VD: Anh H là nhân viên trạm y tế, lúc tiêm vaccine, H tiêm nhầm vaccine mà không kiểm tra. Lỗi của H là lỗi gì?
+VD: A và B là đôi bạn thân. Vì cả 2 nảy sinh tình cảm với H nên 2 bên xích mích. A đấm B, B lấy cây gỗ gần đó đánh A. Không may cây gỗ có đinh làm A chết. Hỏi B lỗi gì.

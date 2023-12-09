@@ -126,9 +126,6 @@ function Load_content(URL){
                     <text class="col news_author">${dateFormat}</text>
                 </div>
                 <div class="col">
-                    <text class="col news_content">${data_json[json_item].Image_content}</text>
-                </div>
-                <div class="col">
                     <div class="read_more"><button class="up"><a href=${data_json[json_item].Guid}><text>Đọc tiếp</text><i class="fa-solid fa-arrow-right fa-sm"></i></button></a></div>
                     <div class="read_more"><button class="up" onclick="sum_txt(${"\'" + data_json[json_item].Guid+"\'"})"><text>Tóm tắt nội dung</text></button></div>
                     <div class="watch_later"><button class="up" onclick="Watch_later(${"\'" + data_json[json_item].Guid.toString() + "\'"}, ${"\'" + data_json[json_item].Image_content.toString().replaceAll("\'","\\'") + "\'"}, ${"\'" + data_json[json_item].Title.toString().replaceAll("\'","\\'") + "\'"}, ${"\'" + dateFormat.toString() + "\'"}, ${"\'" + data_json[json_item].Image.toString() + "\'"})"><text >Xem sau</text><i class="fa-regular fa-clock fa-sm" ></i></button></div>
@@ -251,9 +248,6 @@ function Load_content_searching(URL, keyword){
                     <text class="col news_author">${dateFormat}</text>
                 </div>
                 <div class="col">
-                    <text class="col news_content">${data_json[json_item].Image_content}</text>
-                </div>
-                <div class="col">
                     <div class="read_more"><button class="up"><a href=${data_json[json_item].Guid}><text>Đọc tiếp</text><i class="fa-solid fa-arrow-right fa-sm"></i></button></a></div>
                     <div class="read_more"><button class="up" onclick="sum_txt(${"\"" + data_json[json_item].Guid+"\""})"><text>Tóm tắt nội dung</text></button></div>
                     <div class="watch_later"><button class="up" onclick="Watch_later(${"\'" + data_json[json_item].Guid.toString() + "\'"}, ${"\'" + data_json[json_item].Image_content.toString().replaceAll("\'","\\'") + "\'"}, ${"\'" + data_json[json_item].Title.toString().replaceAll("\'","\\'") + "\'"}, ${"\'" + dateFormat.toString() + "\'"}, ${"\'" + data_json[json_item].Image.toString() + "\'"})"><text >Xem sau</text><i class="fa-regular fa-clock fa-sm" ></i></button></div>
@@ -261,7 +255,6 @@ function Load_content_searching(URL, keyword){
             </div>
         </div>   
         `;
-      console.log(html);
       document.querySelector('#search_content').insertAdjacentHTML('beforeend', html);
     }})
   }
