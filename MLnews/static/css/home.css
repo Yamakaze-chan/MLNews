@@ -1,0 +1,158 @@
+.content{
+    width: 100%;
+    height: 1000px; 
+    top: 80px; 
+    position: absolute;
+}
+.content .list_news {
+    height: 500px;
+    margin: auto; 
+    display: block; 
+    overflow-y: scroll;
+    width: 100%; 
+    background-color: aqua; 
+}
+
+.content .list_news::-webkit-scrollbar {
+    display: none;
+}
+
+.content .list_news .news{
+    border-radius: 30px; 
+    border-width: 5px; 
+    border-color: black; 
+    border-style: double; 
+    width: 90%; 
+    background-color: white; 
+    margin: 20px auto 20px auto; 
+    display:flex ; 
+    align-items: center; 
+    justify-content: center;
+    min-height: 300px;
+}
+
+.content .list_news .news .news_assets{
+    background-color: none; 
+    position: relative; 
+    min-width: 280px;
+}
+
+.content .list_news .news .news_assets .news_img{
+    min-height: 200px; 
+    height: calc(100% - 100px);
+    display:flex ; 
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 10px; 
+    margin-bottom: 10px;
+}
+
+.content .list_news .news .news_assets .news_img img{
+    margin: auto; 
+    max-height: calc(100% - 60px);
+    width: 100%; 
+    border-radius: 30px;
+}
+
+.content .list_news .news .news_icons{
+    max-height: 100px; 
+    margin: auto; 
+    bottom: 10px; 
+    width: 80%;
+}
+
+.content .list_news .news .news_icons .list_icons{
+    list-style-type:none; 
+    padding: 0; 
+    margin: 0px;
+}
+
+.content .list_news .news .news_icons .list_icons .icon{
+    margin: auto;
+    display:flex;
+    justify-content: center;
+}
+
+.content .list_news .news .news_txt{
+    background-color: none; 
+    min-width: 280px;
+}
+
+.content .list_news .news .news_txt .news_header a{
+    text-decoration:none;
+    font-size: 2em; 
+    font-weight: bold; 
+    color: red;
+}
+
+.content .list_news .news .news_txt .news_author{
+    margin: 20px 0px 2px 0px; 
+    color: #94e458;
+}
+
+.content .list_news .news .news_txt .read_more{
+    float: left; 
+    min-width: 120px; 
+    width: 30%;
+}
+
+.content .list_news .news .news_txt .watch_later{
+    float: right; 
+    min-width: 120px; 
+    width: 30%;
+}
+
+.content .list_news .news .news_txt .read_more a,
+.content .list_news .news .news_txt .watch_later a{
+    text-decoration: none;
+    color: black;
+}
+
+.content .list_news .news .news_txt .read_more a:hover,
+.content .list_news .news .news_txt .watch_later a:hover{
+    text-decoration: none;
+    color: white;
+}
+
+.content .list_news .news .news_txt .read_more button,
+.content .list_news .news .news_txt .watch_later button{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+}
+
+.content .list_news .news .news_txt .read_more button text,
+.content .list_news .news .news_txt .watch_later button text{
+    font-size: 1.25em;
+}
+
+.content .list_news .news .news_txt .read_more button i,
+.content .list_news .news .news_txt .watch_later button i{
+    margin-left: 10px;
+}
+
+.up{
+    color: black;
+    transition: 0.5s;
+    background: none;
+    border-radius: 10px;
+    border: 0px solid;
+    font: inherit;
+    margin: 0.5em;
+    padding: 1em 2em;
+}
+.up:hover,
+.up:focus {
+box-shadow: inset 0 -6.5em 0 0 #94e458;
+border-color: #94e458;
+color: #fff;
+}
+
+
+
+
+
+
+
+
+

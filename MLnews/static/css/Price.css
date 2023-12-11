@@ -1,0 +1,56 @@
+.page_container{
+    position: absolute;
+    top: 80px;
+    display: block;
+    width: 100%;
+}
+
+.navigation{
+    height: 80px;
+    display: block;
+    background-color: white;
+    text-align: center;
+    justify-items: center;
+}
+
+.nav_btn{
+    margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  text-align: center;
+  width: 100%;
+}
+
+.button {
+    padding: 24px;
+    background:none;
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border-bottom: 4px solid white;
+    padding: 20px 0;
+    margin: 0 20px;
+    width: 10%;
+  }
+
+.button:hover, .active {
+  border-bottom: 4px solid orange;
+  padding: 6px 0; 
+  }
+
+.content {
+    width: 100%;
+}
+
+.content iframe {
+    width: 100%;
+    height: calc(100%);
+    display: block;
+}
