@@ -24,7 +24,20 @@ Vi phạm PL phải đủ 4 tiêu chí:
     + Chủ quan: Biểu hiện tâm lý bên trong của của chủ thể VPPL
 
 
-VD: A lẻn vào nhà B ăn trộm, phát hiện có vàng ở đầu giường nên lấy. Sau khi lấy thì B phát hiện đuôiỉ theo đánh A. trong lúc giằng co thì A đánh B rồi bỏ chạy ra sông. B về nhà rút kiếm đuổi theo A, chém A làm A bị thương. Hỏi lỗi của B là lỗi gì?
-VD: Chị A là nhân viên 1 quán phở, quán phở có 1 cái gờ. Chị A bưng phở, bị vấp gờ làm đổ lên người khách làm khách bị bỏng. Hỏi chị A lỗi gì?
-VD: Anh H là nhân viên trạm y tế, lúc tiêm vaccine, H tiêm nhầm vaccine mà không kiểm tra. Lỗi của H là lỗi gì?
-VD: A và B là đôi bạn thân. Vì cả 2 nảy sinh tình cảm với H nên 2 bên xích mích. A đấm B, B lấy cây gỗ gần đó đánh A. Không may cây gỗ có đinh làm A chết. Hỏi B lỗi gì.
+VD: A lẻn vào nhà B ăn trộm, phát hiện có vàng ở đầu giường nên lấy. Sau khi lấy thì B phát hiện đuôiỉ theo đánh A. trong lúc giằng co thì A đánh B rồi bỏ chạy ra sông. B về nhà rút kiếm đuổi theo A, chém A làm A bị thương. Hỏi lỗi của B là lỗi gì? ->Cố ý gián tiếp
+VD: Chị A là nhân viên 1 quán phở, quán phở có 1 cái gờ. Chị A bưng phở, bị vấp gờ làm đổ lên người khách làm khách bị bỏng. Hỏi chị A lỗi gì? ->vì quá tự tin
+VD: Anh H là nhân viên trạm y tế, lúc tiêm vaccine, H tiêm nhầm vaccine mà không kiểm tra. Lỗi của H là lỗi gì? -> 
+VD: A và B là đôi bạn thân. Vì cả 2 nảy sinh tình cảm với H nên 2 bên xích mích. A đấm B, B lấy cây gỗ gần đó đánh A. Không may cây gỗ có đinh làm A chết. Hỏi B lỗi gì. ->Cố ý gián tiếp vì để mặc lấy cây đánh người ta
+
+
+Anh A 25 tuổi, thanh niên không có nghề nghiệp, hay cá độ, bị chủ nợ đòi tiền. Vì bị đòi quá nhiều nên rủ rê 1 cậu em 16 tuổi cướp giật, sau khi hoàn thành chia 50 50. Sau khi giật thành công thì bị người dân bắt lại. Trong TH này, động cơ mục đích của 2 người là gì.
+->
+A: Cố ý trực tiếp. ĐỘng cơ là cá độ đá banh. Mục đích là cướp tiền để trả nợ
+nhóc 16 tuổi: Cố ý trực tiếp. Động cơ là muốn có tiền xài và bị rủ rê. Mục đích là cướp tiền xài
+
+VD: A và B là 1 cặp đôi. Vì A nghiện ma túy nên B thường khuyên ngăn A. A hứa với B là sẽ cai nếu B không chia tay. B đồng ý. Sau 1 thời gian thì A không thực hiện được lời hứa nên B chia tay. Sau chia tay thì A mua axit để tạt B. A tạt nhầm em gái C. Hỏi trong TH này, hành vi vi phạm của A là gì?
+A: 
+Tội 1: Nghiện ma túy
+
+Tội 2: Tạt axit
+cố ý trực tiếp

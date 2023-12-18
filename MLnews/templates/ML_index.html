@@ -89,8 +89,10 @@
           <li><a href="home">Trang chủ</a></li>
           <li><a href="finance">Thị trường</a></li>
           <li><a href="chatbot">Bot</a></li>
+          {% if request.user.is_authenticated %}
           <li><a href="show_watch_later">Xem sau</a></li>
-          <li><a href="#">Thông tin cá nhân</a></li>
+          <li><a href="update_info">Thông tin cá nhân</a></li>
+          {% endif %}
           <li><div class="wrap">
             <div class="search" style="display: flex;">
                <input type="text" class="searchTerm" id="input_search" placeholder="Tìm kiếm">
@@ -98,11 +100,14 @@
             </div>
             </div></li>
           {% if request.user.is_authenticated %}
-          <li>Hello, {{ request.user.username }}</li>
+          <li>Hello, <text id="fname"></text><text id="lname"></text></li>
           <li><a class="login-button" href="{% url 'logout' %}">Đăng xuất</a></li>
           {% else %}
           <li><a class="login-button" href="{% url 'login' %}">Login</a></li>
           <li><a class="join-button" href="{% url 'signup' %}">Sign up</a></li>
+          {% endif %}
+          {% if user.is_superuser %}
+          <li><a class="login-button" href="{% url 'dashboard' %}">dashboard</a></li>
           {% endif %}
       </ul>
   </nav>
@@ -376,5 +381,21 @@ function sum_txt(url)
         }
     });
 }
+
+$(document).ready(function () {
+    $.ajax({
+              type: "POST",
+              url: "{% url 'get_user_info' %}",
+              data: {
+                  csrfmiddlewaretoken: '{{ csrf_token }}'
+              },
+              dataType: "json",
+              success: function (data) {
+                console.log(data.data[0][2]);
+                $('#fname').text(data.data[0][2]);
+                $('#lname').text(data.data[0][3]);
+              }
+            });
+          })
 </script>
 </html>

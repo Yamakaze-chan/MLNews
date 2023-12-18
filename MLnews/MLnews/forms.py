@@ -1,6 +1,6 @@
 from django import forms
 from django.db import models
-from django.contrib.auth.forms import AuthenticationForm, UsernameField
+from django.contrib.auth.forms import SetPasswordForm
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100)
@@ -36,3 +36,20 @@ class Watch_later(forms.ModelForm):
         model = Watch_later_info
         fields = '__all__'
 
+class User_info(models.Model):
+    username = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    phone = models.CharField(max_length=20)
+    address = models.CharField(max_length=1000)
+
+class Watch_user_info(forms.ModelForm):
+    class Meta:
+        model = User_info
+        fields = '__all__'
+
+class SetPasswordForm(SetPasswordForm):
+    class Meta:
+        model = User
+        fields = ['new_password1', 'new_password2']

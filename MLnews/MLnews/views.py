@@ -8,7 +8,9 @@ from MLnews.pythonvit5.sum_txt import sum_txt, getAuthor, getDate, getKeyword, g
 from MLnews.ChatbotCNN.chatbot import response
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout 
-from MLnews.forms import LoginForm, RegisterForm, Watch_later
+from MLnews.forms import LoginForm, RegisterForm, Watch_later, User_info, Watch_user_info
+from .forms import SetPasswordForm
+from django.contrib.auth import password_validation
 import datetime
 import sqlite3
 from sqlite3 import Error
@@ -40,6 +42,9 @@ def dashboard(request):
 
 def get_all_user_info(request):
     return render(request, 'Get_all_user_info.html')
+
+def update_info(request):
+    return render(request, 'update_info.html')
 
 
 def bot_response(request):
@@ -78,6 +83,16 @@ def user_signup(request):
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.save()
+            sqliteConnection = sqlite3.connect(r"C:\Users\ACER\AI\sum_txt\MLnews\db.sqlite3")
+            cursor = sqliteConnection.cursor()
+            print("Connected to SQLite")
+
+            # Deleting single record now
+            sql_delete_query = "INSERT INTO 'MLnews_user_info' (username, first_name, last_name, email, phone, address ) VALUES (\'" + str(request.user.id)+"\', '','','','','')"
+            cursor.execute(sql_delete_query)
+            sqliteConnection.commit()
+            print("Record deleted successfully ")
+            cursor.close()
             login(request, user)
             return render(request, 'ML_index.html')
         else:
@@ -225,4 +240,87 @@ def sum_txt(request):
         #print(article_text)
         return JsonResponse({"sum_text":article_text})
     return JsonResponse({"sum_text":""})
+
+def update_user_info(request):
+    if request.method == "POST":
+        f_name = request.POST.get("firstname")
+        l_name = request.POST.get("lastname")
+        email = request.POST.get("email")
+        phone = request.POST.get("phone")
+        address = request.POST.get("address")
+        try:
+            sqliteConnection = sqlite3.connect(r"C:\Users\ACER\AI\sum_txt\MLnews\db.sqlite3")
+            cursor = sqliteConnection.cursor()
+            print("Connected to SQLite")
+
+            # Deleting single record now
+            sql_delete_query = "UPDATE 'MLnews_user_info' SET first_name = \'" + f_name + "\' , last_name=\'" + l_name + "\' , email = \'"+email+"\' , phone=\'" + phone + "\' , address=\'"+address+"\', username=\'"+str(request.user.id)+"\'"
+            cursor.execute(sql_delete_query)
+            sqliteConnection.commit()
+            cursor.close()
+            if sqliteConnection:
+                sqliteConnection.close()
+            return JsonResponse({"error": None})
+        except:
+        #print(article_text)
+            return JsonResponse({"error": "Something went wrong with database"})
+    return render(request, 'update_info.html')
+
+def get_user_info(request):
+    if request.method == "POST":
+        try:
+            sqliteConnection = sqlite3.connect(r"C:\Users\ACER\AI\sum_txt\MLnews\db.sqlite3")
+            cursor = sqliteConnection.cursor()
+            print("Connected to SQLite")
+
+            # Deleting single record now
+            sql_delete_query = "SELECT * FROM 'MLnews_user_info' WHERE username=\'"+str(request.user.id)+"\'"
+            cursor.execute(sql_delete_query)
+            rows = cursor.fetchall()
+            sqliteConnection.commit()
+            cursor.close()
+            if sqliteConnection:
+                sqliteConnection.close()
+            return JsonResponse({"error": None,
+                                 "data":rows})
+        except:
+        #print(article_text)
+            return JsonResponse({"error": "Something went wrong with database"})
+    return render(request, 'update_info.html')
+
+def password_change(request):
+    user = request.user
+    if request.method == 'POST':
+        form = SetPasswordForm(user, request.POST)
+        if form.is_valid():
+            form.save()
+            print(request, "Your password has been changed")
+            return redirect('login')
+        else:
+            for error in list(form.errors.values()):
+                return render(request, 'change_password.html', {'form': form}) 
+
+    form = SetPasswordForm(user)
+    return render(request, 'change_password.html', {'form': form})
+
+def password_reset(request):
+    if request.method == 'POST':
+        print(request.POST)
+        try:
+            user = User.objects.get(username=request.POST.get("username"))
+        except:
+            return render(request, 'reset_password.html', {'error': 'Not found this user'})
+        else:
+            try:
+                password_validation.validate_password(request.POST.get('password'))
+            except Exception as e:
+                return render(request, 'reset_password.html', {'error': e})
+            if (request.POST.get('password') == request.POST.get('confirmpassword')):
+                user.set_password(request.POST.get("password"))
+                user.save()
+            else: 
+                return render(request, 'reset_password.html', {'error': 'Mật khẩu không trùng khớp'})
+        return redirect('login')
+    return render(request, 'reset_password.html')
+        
         
