@@ -46,6 +46,9 @@ def get_all_user_info(request):
 def update_info(request):
     return render(request, 'update_info.html')
 
+def weather_forecast(request):
+    return render(request, 'plot_weather.html')
+
 
 def bot_response(request):
     if request.method == 'GET':

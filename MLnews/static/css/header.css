@@ -121,6 +121,7 @@
       clip-path: circle(1000px at 90% -10%);
       -webkit-clip-path: circle(1000px at 90% -10%);
       pointer-events: all;
+      padding: 0px
   }
   .nav-links li{
       opacity: 0;

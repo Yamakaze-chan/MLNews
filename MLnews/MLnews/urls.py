@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from MLnews.views import home, bot_response, finance, chatbot, changecurr, changegold, changestock, user_login, user_signup, user_logout, watch_later, Show_watch_later, Remove_watch_later, get_all_user, dashboard, get_all_user_info, del_user, sum_txt,update_info, update_user_info, get_user_info, password_change, password_reset
+from MLnews.views import home, bot_response, finance, chatbot, changecurr, changegold, changestock, user_login, user_signup, user_logout, watch_later, Show_watch_later, Remove_watch_later, get_all_user, dashboard, get_all_user_info, del_user, sum_txt,update_info, update_user_info, get_user_info, password_change, password_reset,weather_forecast
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -44,4 +44,5 @@ urlpatterns = [
     path('get_user_info', get_user_info, name='get_user_info'),
     path("password_change", password_change, name="password_change"),
     path("password_reset", password_reset, name="password_reset"),
+    path("weather_forecast", weather_forecast, name="weather_forecast"),
 ]
