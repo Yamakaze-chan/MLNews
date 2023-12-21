@@ -82,19 +82,19 @@ def user_signup(request):
    
     if request.method == 'POST':
         form = RegisterForm(request.POST) 
+        print(request.POST)
         if form.is_valid():
+            name = request.POST.get("username")
             user = form.save(commit=False)
-            user.username = user.username.lower()
+            user.username = request.POST.get("username").lower()
+            user.first_name = request.POST.get("username").lower()
+            user.is_staff = False if request.POST.get("is_staff")==None else True
             user.save()
             sqliteConnection = sqlite3.connect(r"C:\Users\ACER\AI\sum_txt\MLnews\db.sqlite3")
             cursor = sqliteConnection.cursor()
-            print("Connected to SQLite")
-
-            # Deleting single record now
-            sql_delete_query = "INSERT INTO 'MLnews_user_info' (username, first_name, last_name, email, phone, address ) VALUES (\'" + str(request.user.id)+"\', '','','','','')"
+            sql_delete_query = "INSERT INTO 'MLnews_user_info' (username, first_name, last_name, email, phone, address ) VALUES (\'" + str(user.id)+"\', \'"+ name+"\','','','','')"
             cursor.execute(sql_delete_query)
             sqliteConnection.commit()
-            print("Record deleted successfully ")
             cursor.close()
             login(request, user)
             return render(request, 'ML_index.html')
@@ -105,7 +105,6 @@ def user_signup(request):
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
-        print("login GET: ", request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
@@ -113,6 +112,9 @@ def user_login(request):
             if user:
                 login(request, user)    
                 return render(request, 'ML_index.html')
+            else:
+                return render(request, 'login.html', {'error': "Tài khoản hoặc mật khẩu không đúng",
+                                                      'form': form})
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
@@ -121,6 +123,28 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return render(request, 'ML_index.html')
+
+def user_signup_admin(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST) 
+        print(request.POST)
+        if form.is_valid():
+            name = request.POST.get("username")
+            user = form.save(commit=False)
+            user.username = request.POST.get("username").lower()
+            user.first_name = request.POST.get("username").lower()
+            user.is_staff = False if request.POST.get("is_staff")=="false" else True
+            user.save()
+            sqliteConnection = sqlite3.connect(r"C:\Users\ACER\AI\sum_txt\MLnews\db.sqlite3")
+            cursor = sqliteConnection.cursor()
+            sql_delete_query = "INSERT INTO 'MLnews_user_info' (username, first_name, last_name, email, phone, address ) VALUES (\'" + str(user.id)+"\', \'"+ name+"\','','','','')"
+            cursor.execute(sql_delete_query)
+            sqliteConnection.commit()
+            cursor.close()
+            return JsonResponse({"success":"Tạo tài khoản thành công"})
+        else:
+            print(form.errors)
+            return JsonResponse(form.errors)
 
 # Watch later
 def watch_later(request):
@@ -210,7 +234,7 @@ def get_all_user(request):
                               'username':i['username'], 
                               'First name': i['first_name'], 
                               'Last name': i['last_name'], 
-                              'Last login': i['last_login'].strftime("%m/%d/%Y, %H:%M:%S"), 
+                              'Last login': i['last_login'].strftime("%m/%d/%Y, %H:%M:%S") if i['last_login']!=None else "Chưa đăng nhập", 
                               'admin':i['is_staff']}))
         return JsonResponse({'all_user': json.dumps(list_user)})
 
@@ -251,13 +275,18 @@ def update_user_info(request):
         email = request.POST.get("email")
         phone = request.POST.get("phone")
         address = request.POST.get("address")
+        uid = request.POST.get("uid")
+        u = User.objects.get(id = uid)
+        u.first_name = f_name
+        u.last_name = l_name
+        u.email = email
         try:
             sqliteConnection = sqlite3.connect(r"C:\Users\ACER\AI\sum_txt\MLnews\db.sqlite3")
             cursor = sqliteConnection.cursor()
             print("Connected to SQLite")
 
             # Deleting single record now
-            sql_delete_query = "UPDATE 'MLnews_user_info' SET first_name = \'" + f_name + "\' , last_name=\'" + l_name + "\' , email = \'"+email+"\' , phone=\'" + phone + "\' , address=\'"+address+"\', username=\'"+str(request.user.id)+"\'"
+            sql_delete_query = "UPDATE 'MLnews_user_info' SET first_name = \'" + f_name + "\' , last_name=\'" + l_name + "\' , email = \'"+email+"\' , phone=\'" + phone + "\' , address=\'"+address+"\', username=\'"+str(uid)+"\'"
             cursor.execute(sql_delete_query)
             sqliteConnection.commit()
             cursor.close()
@@ -272,12 +301,13 @@ def update_user_info(request):
 def get_user_info(request):
     if request.method == "POST":
         try:
+            uid = request.POST.get("uid")
             sqliteConnection = sqlite3.connect(r"C:\Users\ACER\AI\sum_txt\MLnews\db.sqlite3")
             cursor = sqliteConnection.cursor()
             print("Connected to SQLite")
-
+            print(uid)
             # Deleting single record now
-            sql_delete_query = "SELECT * FROM 'MLnews_user_info' WHERE username=\'"+str(request.user.id)+"\'"
+            sql_delete_query = "SELECT * FROM 'MLnews_user_info' WHERE username=\'"+str(uid)+"\'"
             cursor.execute(sql_delete_query)
             rows = cursor.fetchall()
             sqliteConnection.commit()

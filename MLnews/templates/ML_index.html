@@ -388,11 +388,12 @@ $(document).ready(function () {
               type: "POST",
               url: "{% url 'get_user_info' %}",
               data: {
+                  "uid": {{user.id}},
                   csrfmiddlewaretoken: '{{ csrf_token }}'
               },
               dataType: "json",
               success: function (data) {
-                console.log(data.data[0][2]);
+                console.log(data.data);
                 $('#fname').text(data.data[0][2]);
                 $('#lname').text(data.data[0][3]);
               }

@@ -107,14 +107,9 @@ function Load_content(URL){
                         <img src="${data_json[json_item].Image}">
                         </a>
                     </div>
-                <div class="col news_icons">
+                  <div class="col news_icons">
                     <ul class="row list_icons">
-                        <li class="col icon" ><a href="./LoginSignup.html"><i class="fa-regular fa-thumbs-up fa-xl"></i></a></li>
-                        <!--li class="col icon"><a href="./LoginSignup.html"><i class="fa-solid fa-thumbs-up fa-xl"></i></i></a></li-->
-                        <!--li class="col icon"><a href="./LoginSignup.html"><i class="fa-solid fa-thumbs-down fa-xl"></i></i></a></li-->
-                        <li class="col icon" ><a href="./LoginSignup.html"><i class="fa-regular fa-thumbs-down fa-xl"></i></i></a></li>
-                        <li class="col icon" ><a href="./LoginSignup.html"><i class="fa-solid fa-comment fa-xl"></i></a></li>
-                        <li class="col icon" ><a href="./LoginSignup.html"><i class="fa-solid fa-share fa-xl"></i></a></li>
+                        <li class="col icon" ><a onclick="Share_news(\'${data_json[json_item].Guid}\')"><i class="fa-solid fa-share fa-xl"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -231,12 +226,7 @@ function Load_content_searching(URL, keyword){
                     </div>
                 <div class="col news_icons">
                     <ul class="row list_icons">
-                        <li class="col icon" ><a href="./LoginSignup.html"><i class="fa-regular fa-thumbs-up fa-xl"></i></a></li>
-                        <!--li class="col icon"><a href="./LoginSignup.html"><i class="fa-solid fa-thumbs-up fa-xl"></i></i></a></li-->
-                        <!--li class="col icon"><a href="./LoginSignup.html"><i class="fa-solid fa-thumbs-down fa-xl"></i></i></a></li-->
-                        <li class="col icon" ><a href="./LoginSignup.html"><i class="fa-regular fa-thumbs-down fa-xl"></i></i></a></li>
-                        <li class="col icon" ><a href="./LoginSignup.html"><i class="fa-solid fa-comment fa-xl"></i></a></li>
-                        <li class="col icon" ><a href="./LoginSignup.html"><i class="fa-solid fa-share fa-xl"></i></a></li>
+                        <li class="col icon" ><a onclick="Share_news(\"${data_json[json_item].Guid}\")"><i class="fa-solid fa-share fa-xl"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -343,3 +333,7 @@ function Search_news(content = 'tin_moi'){
   `;
   Show_search_content(content, document.querySelector("#input_search").value)
 }
+
+function Share_news(url) {
+  navigator.clipboard.writeText(url);
+  }

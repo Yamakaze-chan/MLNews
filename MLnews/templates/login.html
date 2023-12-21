@@ -35,10 +35,12 @@
 		<div class="row">
 			<div class="input-cart col s12 m10 push-m1 z-depth-2 grey lighten-5">
 				<div class="col s12 m5 login">
+          <text class="left" style="color: #4FB0FD"><a href="home">&lt;Quay về trang chủ</a></text> <br>
 					<h4 class="center">Đăng nhập</h4>
 					<br>
 					<form method="post" autocomplete="off">
             {% csrf_token %}
+            {{error}}
             {{ form.non_field_errors }}
 						<div class="row">
 							<div class="input-field form-group">

@@ -41,3 +41,18 @@ Tội 1: Nghiện ma túy
 
 Tội 2: Tạt axit
 cố ý trực tiếp
+
+
+Nội dung của di chúc không được trái quy định của pháp luật, người lập di chúc phải sáng suốt, minh mẫn, nhận thức được hành vi của mình
+Nguyên tắc: Di chúc định đoạt sao mình phải theo vậy, 
+những người hưởng thừa kế không phụ thuộc vào nội dung di chúc: cha mẹ, vợ chồng, con cái dưới 18 hoặc mất khả năng lao động.
+Hưởng 2/3 của 1 suất thừa kế. 1 suất thừa kế được xác định là việc chúng ta đem di sản người chết chia theo pháp luật cho những người thuộc hàng thừa kế của người chết
+thừa kế thế vị: Nếu con của người để lại di sản chết trước hoặc chết cùng lúc với người để lại di sản thì cháu của người để lại di sản thì cháu của người di sản sẽ hưởng thay. Thừa kế thế vị chỉ được hưởng theo pháp luật.
+
+Bài tập:
+A và B là vợ chồng, có con là C và D. C cưới  và có con là X và Y. A chết cùng C và để lại 900 triệu. Tính di sản thừa kế 
+Giải:
+B 1/2+1/16 900
+D 1/4+1/16 900
+X 1/8+1/16 900
+Y 1/8+1/16 900

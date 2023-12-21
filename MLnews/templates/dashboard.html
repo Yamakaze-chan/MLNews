@@ -40,13 +40,14 @@
                         <a href="home">Quay về</a>
                     </li>
                     <li>
-                        <a href="#menu-toggle" class="btn btn-default" id="toggle-menu">Toggle Menu</a>
+                        <a href="#menu-toggle" class="btn btn-default" id="toggle-menu">Đóng Menu</a>
                     </li>
                 </ul>
             </div>
             <!-- /#sidebar-wrapper -->
     
             <!-- Page Content -->
+            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle" style="height: 2em;">&lt;Menu</a>
             <div id="page-content-wrapper">
                 <div class="container-fluid">
                     <div class="row">
@@ -54,12 +55,10 @@
                             <h1>Simple Sidebar</h1>
                             <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
                             <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- /#page-content-wrapper -->
     
         </div>
     </body>
@@ -75,7 +74,7 @@
     </script>
     <script>
         $('#account').click(function(){
-                $('#page-content-wrapper').html("<iframe src='./get_all_user_info' style='width:100%; height:90vh'></iframe>");
+                $('#page-content-wrapper').html("<iframe src='./get_all_user_info' style='width:100%; height: calc(100vh - 2em)'></iframe>");
 })
     </script>
 </html>

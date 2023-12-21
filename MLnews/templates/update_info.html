@@ -177,7 +177,8 @@
               type: "POST",
               url: "{% url 'get_user_info' %}",
               data: {
-                  csrfmiddlewaretoken: '{{ csrf_token }}'
+                "uid": {{request.user.id}},
+                csrfmiddlewaretoken: '{{ csrf_token }}'
               },
               dataType: "json",
               success: function (data) {
@@ -276,6 +277,7 @@
               type: "POST",
               url: "{% url 'update_user_info' %}",
               data: {
+                  "uid": {{request.user.id}},
                   "firstname" : $('#first_name').val(),
                   "lastname" : $('#last_name').val(),
                   "email" : $('#email').val(),

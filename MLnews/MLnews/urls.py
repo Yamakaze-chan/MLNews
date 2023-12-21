@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from MLnews.views import home, bot_response, finance, chatbot, changecurr, changegold, changestock, user_login, user_signup, user_logout, watch_later, Show_watch_later, Remove_watch_later, get_all_user, dashboard, get_all_user_info, del_user, sum_txt,update_info, update_user_info, get_user_info, password_change, password_reset,weather_forecast
+from MLnews.views import home, bot_response, finance, chatbot, changecurr, changegold, changestock, user_login, user_signup, user_logout, watch_later, Show_watch_later, Remove_watch_later, get_all_user, dashboard, get_all_user_info, del_user, sum_txt,update_info, update_user_info, get_user_info, password_change, password_reset,weather_forecast, user_signup_admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,6 +30,7 @@ urlpatterns = [
     path('Change_stock', changestock, name='Change_stock'),
     path('login', user_login, name='login'),
     path('signup', user_signup, name='signup'),
+    path('signup_admin', user_signup_admin, name='signup_admin'),
     path('logout', user_logout, name='logout'),
     path('watch_later', watch_later, name='watch_later'),
     path('show_watch_later', Show_watch_later, name='show_watch_later'),
