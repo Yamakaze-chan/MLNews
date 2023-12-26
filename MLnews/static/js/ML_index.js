@@ -226,7 +226,7 @@ function Load_content_searching(URL, keyword){
                     </div>
                 <div class="col news_icons">
                     <ul class="row list_icons">
-                        <li class="col icon" ><a onclick="Share_news(\"${data_json[json_item].Guid}\")"><i class="fa-solid fa-share fa-xl"></i></a></li>
+                        <li class="col icon" ><a onclick="return Share_news(\"${data_json[json_item].Guid}\")"><i class="fa-solid fa-share fa-xl"></i></a></li>
                     </ul>
                 </div>
             </div>

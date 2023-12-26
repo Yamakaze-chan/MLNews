@@ -99,7 +99,7 @@
                 <ul class="nav-links">
                     <li><a href="home">Trang chủ</a></li>
                     <li><a href="finance">Thị trường</a></li>
-                    <li><a href="chatbot">Bot</a></li>
+                    <!--li><a href="chatbot">Bot</a></li-->
                     <li><a href="weather_forecast">Thời tiết</a></li>
                     {% if request.user.is_authenticated %}
                     <li><a href="show_watch_later">Xem sau</a></li>
@@ -333,6 +333,22 @@
         $.getJSON( "https://api.open-meteo.com/v1/forecast?latitude=10.823&longitude=106.6296&current=temperature_2m,relative_humidity_2m&daily=weather_code,temperature_2m_max,temperature_2m_min,rain_sum&timezone=Asia%2FBangkok", function( data ) {
             console.log(data.daily)
             });
+            $(document).ready(function () {
+    $.ajax({
+              type: "POST",
+              url: "{% url 'get_user_info' %}",
+              data: {
+                  "uid": {{user.id}},
+                  csrfmiddlewaretoken: '{{ csrf_token }}'
+              },
+              dataType: "json",
+              success: function (data) {
+                console.log(data.data);
+                $('#fname').text(data.data[0][2]);
+                $('#lname').text(data.data[0][3]);
+              }
+            });
+          })
     </script>
     <script src="../static/js/header.js"></script>
     
