@@ -22,6 +22,9 @@
                         <a href="#" id="account">Tài khoản</a>
                     </li>
                     <li>
+                        <a href="#" id="chatbot_content">Chatbot</a>
+                    </li>
+                    <li>
                         <a href="home">Quay về</a>
                     </li>
                     <li>
@@ -59,7 +62,10 @@
     </script>
     <script>
         $('#account').click(function(){
-                $('#page-content-wrapper').html("<iframe src='./get_all_user_info' style='width:100%; height: calc(100vh - 2em)'></iframe>");
+                $('#page-content-wrapper').html("<iframe src='get_all_user_info' style='width:100%; height: calc(100vh - 2em)'></iframe>");
+})
+$('#chatbot_content').click(function(){
+                $('#page-content-wrapper').html("<iframe src='get_chatbot_json' style='width:100%; height: calc(100vh - 2em)'></iframe>");
 })
     </script>
 </html>

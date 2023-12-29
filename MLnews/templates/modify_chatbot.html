@@ -1,0 +1,548 @@
+<html lang="en"><head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    
+  <style>
+  @import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto+Mono");
+  
+  .card {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  #editorWrapper {
+    position: relative;
+    height: 100%;
+    min-height: 45vh;
+  }
+  @media (max-width: 800px){
+    .card-body{
+        height: max-content;
+        overflow: scroll;
+    }
+  }
+  @media (min-height: 600px) {
+    #editorWrapper {
+      height: 100%;
+      max-height: calc(100vh - 150px);
+    }
+  }
+  @media (min-height: 900px) {
+    #editorWrapper {
+      height: 100vh;
+      max-height: calc(100vh - 150px);
+    }
+  }
+  #editorWrapper #editor {
+    font-family: "Roboto Mono", monospace;
+    font-size: 14px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .btn {
+    color: rgba(0, 0, 0, 0.9);
+    font-family: "Russo One", sans-serif;
+    font-size: 1.2em;
+    font-weight: 200;
+    letter-spacing: 0.15em;
+    line-height: 2.5;
+    text-decoration: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0 1em;
+    position: relative;
+    width: 100%;
+    margin-bottom: 1em;
+    background-color: #FFA71A;
+  }
+  .btn:hover {
+    background-color: #cd7e00;
+  }
+  .form-group{
+    height: calc(100vh - 150px);
+  }
+.container-item {
+  width: max-content;
+}
+
+.autocomplete {
+  position: relative;
+  padding-bottom: 10px;
+}
+.autocomplete-input {
+  padding: 7px 10px;
+  width: 93%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+}
+.autocomplete-input:focus {
+  border-color: #000;
+}
+.autocomplete-list {
+  position: absolute;
+  z-index: 2;
+  overflow: auto;
+  min-width: 250px;
+  max-height: 150px;
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+  border: 1px solid #eee;
+  list-style: none;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+}
+.autocomplete-list li {
+  margin: 0;
+  padding: 8px 15px;
+  border-bottom: 1px solid #f5f5f5;
+}
+.autocomplete-list li:last-child {
+  border-bottom: 0;
+}
+.autocomplete-list li:hover, .autocomplete-list li.active {
+  background-color: #f5f5f5;
+}
+mark {
+  background-color: yellow;
+  color: black;
+  padding: 0px;
+  margin: 0px;
+}
+.custom-btn {
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+/* 3 */
+.btn-3 {
+  background: rgb(0,172,238);
+background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  
+}
+.btn-3 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-3:before,
+.btn-3:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+   background: rgba(2,126,251,1);
+  transition: all 0.3s ease;
+}
+.btn-3:before {
+  height: 0%;
+  width: 2px;
+}
+.btn-3:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3:hover{
+   background: transparent;
+  box-shadow: none;
+}
+.btn-3:hover:before {
+  height: 100%;
+}
+.btn-3:hover:after {
+  width: 100%;
+}
+.btn-3 span:hover{
+   color: rgba(2,126,251,1);
+}
+.btn-3 span:before,
+.btn-3 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+   background: rgba(2,126,251,1);
+  transition: all 0.3s ease;
+}
+.btn-3 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-3 span:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3 span:hover:before {
+  height: 100%;
+}
+.btn-3 span:hover:after {
+  width: 100%;
+}
+
+
+  </style>
+  <body>
+    <div class="card">
+        <div class="card-body">
+        <h1>JSON Editor</h1>
+        <div class="row">
+            <div id="modify_form" class="col">
+                <div id="modify_tag_form" class="row">
+                    <div id="modify_tag" class="col">
+                        <label>Tags:</label>
+                        <autocomplete placeholder="Tags" />
+                    </div>
+                </div>
+                <div id="modify_pattern_form" class="row">
+                    <div id="modify_pattern_form" class="col">
+                        <label>Câu hỏi cho bot:</label>
+                        <input id="pattern_input" type="text" class="autocomplete-input" style="margin-bottom: 10px;" placeholder="Patterns"/>
+                    </div>
+                </div>
+                <div id="modify_respond_form" class="row">
+                    <div id="modify_respond_form" class="col">
+                        <label>Câu trả lời của bot:</label>
+                        <input id="respond_input" type="text" class="autocomplete-input" style="margin-bottom: 10px;" placeholder="Responses"/>
+                    </div>
+                </div>
+                <button onclick="add_bot()">Thêm</button>
+            </div>
+            <div class="form-group col">
+                <div id="editorWrapper">
+                <div id="editor"></div>
+                </div>
+                <div class="row">
+                    <div class="col"><a class="btn" id="beautify">Beautify</a></div>
+                </div>
+            </div>
+            </div>
+            <button id="submit_json" class="custom-btn btn-3" onclick="update_chatbot_json()"><span>Cập nhật</span></button>
+        </div>
+      </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.3.3/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.js"></script>
+        <script>
+  const editor = ace.edit('editor', {
+    mode: 'ace/mode/json',
+    selectionStyle: 'text',
+    showPrintMargin: false,
+    theme: 'ace/theme/chrome' });
+  
+  
+  const formatText = (spacing = 0) => {
+    try {
+      const current = JSON.parse(editor.getValue());
+      editor.setValue(JSON.stringify(current, null, spacing));
+      editor.focus();
+      editor.selectAll();
+      document.execCommand('copy');
+    } catch (err) {
+      alert('ERROR: Unable to parse text as JSON');
+    }
+  };
+  
+  editor.on('paste', event => {
+    try {
+      event.text = JSON.stringify(JSON.parse(event.text), null, 4);
+    } catch (err) {
+      // meh
+    }
+  });
+  
+  document.getElementById('beautify').addEventListener('click', () => formatText(4));
+      </script>
+
+      <script>
+        $(document).ready(function () {
+    $.ajax({
+              type: "GET",
+              url: "{% url 'modify_chatbot_json' %}",
+              dataType: "json",
+              success: function (data) {
+                var editor = ace.edit("editor");
+                editor.setValue(JSON.stringify(data, null, 4), -1);
+                standardItems = [];
+                for (index in data.intents){
+                    standardItems.push(data.intents[index].tag);
+                }
+                
+              }
+            });
+          })
+      </script>
+          <script type="text/x-template" id="autocomplete-tpl">
+            <div class="autocomplete">
+              <label :for="id">{{label}}</label>
+              <textarea v-if="textarea" :id="id" :rows="rows" :cols="cols" class="autocomplete-input" :placeholder="placeholder" @focusout="focusout" @focus="focus" @keydown.13="chooseItem" @keydown.tab="chooseItem" @keydown.40="moveDown" @keydown.38="moveUp" v-model="inputValue"
+                type="text"></textarea>
+              <input v-else :id="id" class="autocomplete-input" :placeholder="placeholder" @focusout="focusout" @focus="focus" @keydown.13="chooseItem" @keydown.tab="chooseItem" @keydown.40="moveDown" @keydown.38="moveUp" v-model="inputValue" type="text">
+        
+        
+              <ul :class="{
+                'autocomplete-list': true,
+                [id+'-list']: true
+              }" v-if="searchMatch.length > 0">
+                <li :class="{active: selectedIndex === index}" v-for="(result, index) in searchMatch" @click="selectItem(index), chooseItem()" v-html="highlightWord(result)">
+        
+                </li>
+              </ul>
+            </div>
+        </script>
+        <script>
+            // TODO: collision detection, autoscroll
+// new: tab and highlighting, textareas, follow caret
+var standardItems = [];
+
+const Autocomplete = Vue.component("autocomplete", {
+  template: "#autocomplete-tpl",
+  props: ["items", "placeholder", "label", "textarea", "rows", "cols"],
+  data() {
+    return {
+      //id: 'input-' + parseInt(Math.random() * 1000),
+      id: 'tags_input',
+      inputValue: "",
+      searchMatch: [],
+      selectedIndex: 0,
+      clickedChooseItem: false,
+      wordIndex: 0 };
+
+  },
+  mounted() {
+    const _self = this;
+    document.querySelector('#' + this.id).
+    addEventListener('input', function () {
+      const caret = getCaretCoordinates(this, this.selectionEnd);
+
+      if (_self.searchMatch.length > 0) {
+        const element = document.querySelectorAll('.' + _self.id + '-list');
+
+        if (element[0]) {
+          element[0].style.top = caret.top + 40 + 'px';
+          element[0].style.left = caret.left + 'px';
+        }
+      }
+    });
+  },
+  computed: {
+    listToSearch() {
+      if (typeof this.items !== "undefined" && this.items.length > 0) {
+        return this.items;
+      } else {
+        return standardItems;
+      }
+    },
+    currentWord() {
+      return this.inputValue.replace(/(\r\n|\n|\r)/gm, ' ').split(' ')[this.wordIndex];
+    },
+    inputSplitted() {
+      return this.inputValue.replace(/(\r\n|\n|\r)/gm, ' ').split(" ");
+    } },
+
+  watch: {
+    inputValue() {
+      this.focus();
+      console.log(this.inputSplitted);
+      this.selectedIndex = 0;
+      this.wordIndex = this.inputSplitted.length - 1;
+    } },
+
+  methods: {
+    highlightWord(word) {
+      const regex = new RegExp("(" + this.currentWord + ")", "g");
+      return word.replace(regex, '<mark>$1</mark>');
+    },
+    setWord(word) {
+      let currentWords = this.inputValue.replace(/(\r\n|\n|\r)/gm, '__br__ ').split(' ');
+      currentWords[this.wordIndex] = currentWords[this.wordIndex].replace(this.currentWord, word + ' ');
+      this.wordIndex += 1;
+      this.inputValue = currentWords.join(' ').replace(/__br__\s/g, '\n');
+    },
+    moveDown() {
+      if (this.selectedIndex < this.searchMatch.length - 1) {
+        this.selectedIndex++;
+      }
+    },
+    moveUp() {
+      if (this.selectedIndex !== -1) {
+        this.selectedIndex--;
+      }
+    },
+    selectItem(index) {
+      this.selectedIndex = index;
+      this.chooseItem();
+    },
+    chooseItem(e) {
+      this.clickedChooseItem = true;
+
+      if (this.selectedIndex !== -1 && this.searchMatch.length > 0) {
+        if (e) {
+          e.preventDefault();
+        }
+        this.setWord(this.searchMatch[this.selectedIndex]);
+        this.selectedIndex = -1;
+      }
+    },
+    focusout(e) {
+      setTimeout(() => {
+        if (!this.clickedChooseItem) {
+          this.searchMatch = [];
+          this.selectedIndex = -1;
+        }
+        this.clickedChooseItem = false;
+      }, 100);
+    },
+    focus() {
+      this.searchMatch = [];
+      if (this.currentWord !== "") {
+        this.searchMatch = this.listToSearch.filter(
+        el => el.indexOf(this.currentWord) >= 0);
+
+      }
+      if (
+      this.searchMatch.length === 1 &&
+      this.currentWord === this.searchMatch[0])
+      {
+        this.searchMatch = [];
+      }
+    } } });
+
+
+
+new Vue({
+  el: "#modify_form" });
+
+
+// Thanks: https://github.com/component/textarea-caret-position
+(function () {function e(b, e, f) {if (!h) throw Error("textarea-caret-position#getCaretCoordinates should only be called in a browser");if (f = f && f.debug || !1) {var a = document.querySelector("#input-textarea-caret-position-mirror-div");a && a.parentNode.removeChild(a);}a = document.createElement("div");a.id = "input-textarea-caret-position-mirror-div";document.body.appendChild(a);var c = a.style,d = window.getComputedStyle ? window.getComputedStyle(b) : b.currentStyle,k = "INPUT" === b.nodeName;c.whiteSpace = "pre-wrap";k || (c.wordWrap =
+    "break-word");c.position = "absolute";f || (c.visibility = "hidden");l.forEach(function (a) {k && "lineHeight" === a ? c.lineHeight = d.height : c[a] = d[a];});m ? b.scrollHeight > parseInt(d.height) && (c.overflowY = "scroll") : c.overflow = "hidden";a.textContent = b.value.substring(0, e);k && (a.textContent = a.textContent.replace(/\s/g, "\u00a0"));var g = document.createElement("span");g.textContent = b.value.substring(e) || ".";a.appendChild(g);b = { top: g.offsetTop + parseInt(d.borderTopWidth), left: g.offsetLeft + parseInt(d.borderLeftWidth), height: parseInt(d.lineHeight) };
+    f ? g.style.backgroundColor = "#aaa" : document.body.removeChild(a);return b;}var l = "direction boxSizing width height overflowX overflowY borderTopWidth borderRightWidth borderBottomWidth borderLeftWidth borderStyle paddingTop paddingRight paddingBottom paddingLeft fontStyle fontVariant fontWeight fontStretch fontSize fontSizeAdjust lineHeight fontFamily textAlign textTransform textIndent textDecoration letterSpacing wordSpacing tabSize MozTabSize".split(" "),h = "undefined" !== typeof window,m = h && null != window.mozInnerScreenX;
+  "undefined" != typeof module && "undefined" != typeof module.exports ? module.exports = e : h && (window.getCaretCoordinates = e);})();
+</script>
+<!--Add data bot-->
+<script>
+function  add_bot(){
+    editor.selection.moveTo(0,0);
+    if(document.getElementById('tags_input').value!=""){
+        if(editor.find("\"tag\": \""+document.getElementById('tags_input').value.trim()+"\",",{
+        backwards: false,
+        wrap: false,
+        caseSensitive: false,
+        wholeWord: true,
+        regExp: false
+    }))
+    {
+        if($('#pattern_input').val()!="")
+        {
+            editor.find("\"patterns\": [",{
+            backwards: false,
+            wrap: false,
+            caseSensitive: false,
+            wholeWord: true,
+            regExp: false
+            });
+            //editor.selection.moveTo(editor.getCursorPosition().row+1);
+            editor.execCommand("gotolineend");
+            editor.session.insert(editor.getCursorPosition(),"\n"+"\""+$('#pattern_input').val()+"\",")
+        }
+        if($('#respond_input').val()!="")
+        {
+            editor.find("\"responses\": [",{
+            backwards: false,
+            wrap: false,
+            caseSensitive: false,
+            wholeWord: true,
+            regExp: false
+            });
+            //editor.selection.moveTo(editor.getCursorPosition().row+1);
+            editor.execCommand("gotolineend");
+            editor.session.insert(editor.getCursorPosition(),"\n"+"\""+$('#respond_input').val()+"\",")
+        }
+        $('#respond_input').val("");
+        $('#pattern_input').val("")
+        }
+        else
+        {
+            if($('#pattern_input').val()=="")
+            {
+                alert("Vui lòng nhập Câu hỏi cho bot")
+            }
+            else if($('#pattern_input').val()=="")
+            {
+                alert("Vui lòng nhập Câu trả lời cho bot");
+            }
+            else{
+            editor.gotoLine(2);
+            editor.execCommand("gotolineend");
+            json_data = `
+            {
+                "tag": \"`+document.getElementById('tags_input').value+`",
+                "patterns": [
+                    "`+$('#pattern_input').val()+`"
+                ],
+                "responses": [
+                    "`+$('#respond_input').val()+`"
+                ]
+            },
+            `
+            editor.session.insert(editor.getCursorPosition(),"\n"+""+json_data);
+            $('#respond_input').val("");
+        $('#pattern_input').val("")
+            }
+        }
+    }
+    else
+    {
+        alert("Vui lòng nhập tag")
+    }
+console.log(JSON.parse(editor.getValue()));
+}
+</script>
+<script>
+    function update_chatbot_json(){
+        $.ajax({
+              type: "POST",
+              url: "{% url 'modify_chatbot_json' %}",
+              data: {
+                json_data: editor.getValue(), 
+                csrfmiddlewaretoken: '{{ csrf_token }}'},
+              dataType: "json",
+              success: function (data) {
+
+              }
+            });
+    }
+</script>
+    
+  
+  
+  
+  </body></html>

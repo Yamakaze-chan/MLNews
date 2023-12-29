@@ -14,26 +14,19 @@
         {
             "tag": "greeting",
             "patterns": [
-                "Chào",
+                "Hi",
                 "Xin chào",
-                "Hi there",
-                "How are you",
-                "Is anyone there?",
-                "Hey",
-                "Hola",
-                "Hello",
-                "Good day",
-                "Namaste",
-                "yo",
-                "konichiwa",
-                "Ohayo",
-                "Konbawa"
+                "Chào bạn",
+                "Yo",
+                "hello",
+                "chào",
+                "eyyy"
             ],
             "responses": [
-                "Hello",
-                "Good to see you again",
-                "Hi there, how can I help?",
-                "Hi"
+                "Chào bạn",
+                "Tôi có thể giúp gì cho bạn?",
+                "Rất vui được gặp bạn",
+                "Xin chào"
             ],
             "context": [
                 ""
@@ -42,20 +35,65 @@
         {
             "tag": "goodbye",
             "patterns": [
-                "Bái bai",
-                "See you later",
-                "Goodbye",
-                "Get lost",
-                "Till next time",
-                "bbye"
+                "Cảm ơn",
+                "tks",
+                "thanks",
+                "bye",
+                "pái pai"
             ],
             "responses": [
-                "See you!",
-                "Have a nice day",
-                "Bye! Come back again soon."
+                "Không có gì",
+                "Rất vui vì giúp được bạn",
+                "Vinh hạnh của tôi"
             ],
             "context": [
                 ""
+            ]
+        },
+        {
+            "tag": "whatareyou",
+            "patterns": [
+                "Bạn là ai",
+                "Ai tạo ra bạn",
+                "Bạn là gì",
+                "ai đang nói chuyện với tôi"
+            ],
+            "responses": [
+                "Tôi là chatbot được tạo ra bởi nhóm sinh viên trong quá trình thực hiện đồ án môn học SE347 -  Công nghệ web và ứng dụng. "
+            ]
+        },
+        {
+            "tag": "web",
+            "patterns": [
+                "trang web có gì",
+                "web có những chức năng gì",
+                "các chức năng của web"
+            ],
+            "responses": [
+                "Trang web MLnews là một trang web cập nhật tin tức mới nhất, gồm thời sự, chứng khoán, công nghệ,... Ngoài ra trang web cũng có chức năng tìm kiếm, lưu lại tin tức để xem sau, đăng nhập, đăng kí, đăng xuất và chatbot."
+            ]
+        },
+        {
+            "tag": "function",
+            "patterns": [
+                "Chức năng của bạn à gì?",
+                "Bạn có chức năng gì?",
+                "Các chức năng của bạn là?",
+                "Chức năng của chatbot"
+            ],
+            "responses": [
+                "Tôi có các chức năng được lập trình sẵn như đăng nhập, đăng ký, đăng xuất, lấy dữ liệu tin tức, lưu dữ liệu tin tức để xem sau, lấy dữ liệu thời tiết, lấy dữ liệu chứng khoán, vàng, bạc, tìm kiếm thời sự,... và tôi, chatbot."
+            ]
+        },
+        {
+            "tag": "watch_later",
+            "patterns": [
+                "Làm sao để xem được phần tóm tắt tin tức",
+                "Cách xem phần tóm tắt tin tức",
+                "Xem tóm tắt tin tức như thế nào"
+            ],
+            "responses": [
+                "Bạn có thể nhấn vào phần 'Xem sau' để có thể đọc phần tóm tắt tin tức mà không cần truy cập trang web"
             ]
         }
     ]

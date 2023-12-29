@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
+from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 import json
@@ -355,5 +356,21 @@ def password_reset(request):
                 return render(request, 'reset_password.html', {'error': 'Mật khẩu không trùng khớp'})
         return redirect('login')
     return render(request, 'reset_password.html')
+
+def modify_chatbot_json(request):
+    print(request)
+    if request.method == 'POST':
+        print(request.POST['json_data'])
+        try:
+            string_json = json.loads(request.POST['json_data'])
+            with open("MLnews\ChatbotCNN\intents_VN.json", "w", encoding='utf8') as outfile:
+                outfile.write(json.dumps(string_json,indent=4, ensure_ascii=False))
+            
+                #print(json.loads(request.POST['json_data']))
+        except:
+            return JsonResponse({"error": "Có lỗi trong quá trình thay đổi chatbot"})
+    return HttpResponse(open("MLnews\ChatbotCNN\intents_VN.json", "r", encoding='utf8'),content_type = 'application/json; charset=utf8')
         
+def get_chatbot_json(request):
+    return render(request, 'modify_chatbot.html')
         
