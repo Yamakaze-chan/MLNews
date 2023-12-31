@@ -16,8 +16,8 @@ from keras.models import load_model
 from ..pythonvit5.sum_txt import sum_txt
 
 lemmatizer = WordNetLemmatizer()
-model = load_model('MLnews\ChatbotCNN\chatbot_model')
-intents = json.loads(open('MLnews\ChatbotCNN\intents_VN.json').read())
+model = load_model('MLnews\ChatbotCNN\chatbot_model_VN')
+intents = json.loads(open("MLnews\ChatbotCNN\intents_VN.json", "r", encoding='utf8').read())
 words = pickle.load(open('MLnews\ChatbotCNN\words.pkl','rb'))
 classes = pickle.load(open('MLnews\ChatbotCNN\classes.pkl','rb'))
 
@@ -180,11 +180,11 @@ def get_response(return_list,intents_json, user_text):
     list_of_intents= intents_json['intents']    
     for i in list_of_intents:
         if tag==i['tag'] :
-            result= random.choice(i['responses'])
-    return result
+            return random.choice(i['responses'])
+    return None
 
 def response(text):
     return_list=predict_class(text,model)
     response=get_response(return_list,intents, text)
-    temp = sum_txt(text)
-    return temp
+    #temp = sum_txt(text)
+    return response

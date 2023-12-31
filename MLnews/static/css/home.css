@@ -1,11 +1,12 @@
 .content{
     width: 100%;
-    height: 1000px; 
+    height: max-content; 
+    overflow: hidden;
     top: 80px; 
     position: absolute;
 }
 .content .list_news {
-    height: 500px;
+    height: calc(100vh - 130px);
     margin: auto; 
     display: block; 
     overflow-y: scroll;

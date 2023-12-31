@@ -12,6 +12,7 @@ function openForm() {
     console.log($('#json_test').text())
     var JSON_1 = JSON.parse($('#json_test').text())
     console.log(JSON_1)
+    
     for(var i = 0; i<JSON_1.length; i++)
     {
       json_data = JSON.parse(JSON_1[i])

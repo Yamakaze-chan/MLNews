@@ -72,7 +72,7 @@ function Filter_search(json_data, keyword){
     var json_filter_data = [];
     let i = 0 ;
     json_data.forEach(element => {
-        if(element.Title.includes(keyword) || element.Description.includes(keyword)){
+        if(element.Title.includes(keyword)){
             json_filter_data[i] = element;
             i++;
         }
@@ -177,8 +177,3 @@ function Load_content_searching(URL, keyword){
         document.querySelector('.searching_content').insertAdjacentHTML('beforeend', html);
       }})
     }
-
-    addEventListener("load", (event) => {
-        let URL = ['https://vnexpress.net/rss/tin-moi-nhat.rss'];
-        Load_content_searching(URL, "FPT");
-      });

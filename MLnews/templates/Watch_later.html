@@ -158,13 +158,13 @@
     </div>
 </div>
 
-<div class="searching_content" style="z-index: 1; display: flex; margin:0 auto 0px auto; top:100px; height: 1000px;" >
+<div class="searching_content" style="z-index: 1; display: flex; margin:0 auto 0px auto; top:100px; height: max-content; overflow: hidden;" >
 </div>
 
     <!--Chatbot-->
     <div class="chatbot_container" style="right: 0px; bottom: 30px; position: fixed;z-index: 22; max-width: 100px;max-height: 100px;">
         
-        <img src="../static/img/test1.jpg" width="100" onclick="openForm()">
+        <img src="../static/img/bot.png" width="100" onclick="openForm()">
 
         <div class="popup_chat" id="popup_chat" style=" display: none; position: fixed; bottom: 0px; right:30px; width: 300px;">
             <!--iframe src="../templates/Chatbot.html" height="500px" width="500px"></iframe-->
@@ -178,16 +178,15 @@
             
                 <main class="msger-chat">
                   <div class="msg left-msg">
-                    <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+                    
             
                     <div class="msg-bubble">
                       <div class="msg-info">
                         <div class="msg-info-name">Chatbot</div>
-                        <div class="msg-info-time">12:45</div>
                       </div>
             
                       <div class="msg-text">
-                        Hi, welcome to ChatBot! Go ahead and send me a message. 😄
+                        Xin chào, tôi là MLnews chatbot. Tôi có thể giúp gì cho bạn? 😄
                       </div>
                     </div>
                   </div>
@@ -261,7 +260,7 @@
     //   Simple solution for small apps
     msgHTML = `
       <div class="msg ${side}-msg">
-        <div class="msg-img" style="background-image: url(${img})"></div>
+        
         <div class="msg-bubble">
           <div class="msg-info">
             <div class="msg-info-name">${name}</div>
@@ -274,7 +273,7 @@
           else
           {
             msgHTML = `<div class="msg ${side}-msg">
-              <div class="msg-img" style="background-image: url(${img})"></div>
+              
               <div class="msg-bubble">
                 <div class="msg-info">
                   <div class="msg-info-name">${name}</div>
@@ -302,6 +301,10 @@
 addEventListener("load", (event) => {
 var JSON_1 = JSON.parse($('#json_test').text())
 console.log(JSON_1)
+if(JSON_1.length == 0){
+      document.querySelector("#list_news").insertAdjacentHTML("beforeend", `<div style="width: 100%; text-align:center">Bạn chưa lưu tin tức nào để xem sau</div>`);
+    }
+    else{
 for(var i = 0; i<JSON_1.length; i++)
   {
     //console.log((JSON_1[i].substring(1).slice(0, -1)))\
@@ -333,6 +336,7 @@ for(var i = 0; i<JSON_1.length; i++)
         `
     document.querySelector("#list_news").insertAdjacentHTML("beforeend", html);
   }
+}
   //console.log(JSON.parse("{{JSONs}}".replaceAll("&amp;","&").replaceAll( "&lt;","<").replaceAll("&gt;",">").replaceAll("&quot;","\"").replaceAll("&apos;","'").replaceAll("&#x27","")));
   });
   </script>
