@@ -85,11 +85,13 @@ def user_signup(request):
         form = RegisterForm(request.POST) 
         print(request.POST)
         if form.is_valid():
-            name = request.POST.get("username")
+            name = request.POST.get("username").lower()
             user = form.save(commit=False)
             user.username = request.POST.get("username").lower()
             user.first_name = request.POST.get("username").lower()
             user.is_staff = False if request.POST.get("is_staff")==None else True
+            user.is_admin = False if request.POST.get("is_staff")==None else True
+            user.is_superuser = False if request.POST.get("is_staff")==None else True
             user.save()
             sqliteConnection = sqlite3.connect(r"C:\Users\ACER\AI\sum_txt\MLnews\db.sqlite3")
             cursor = sqliteConnection.cursor()
@@ -107,7 +109,7 @@ def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
+            username = form.cleaned_data['username'].lower()
             password = form.cleaned_data['password']
             user = authenticate(request, username=username, password=password)
             if user:
@@ -130,11 +132,13 @@ def user_signup_admin(request):
         form = RegisterForm(request.POST) 
         print(request.POST)
         if form.is_valid():
-            name = request.POST.get("username")
+            name = request.POST.get("username").lower()
             user = form.save(commit=False)
             user.username = request.POST.get("username").lower()
             user.first_name = request.POST.get("username").lower()
-            user.is_staff = False if request.POST.get("is_staff")=="false" else True
+            user.is_staff = False if request.POST.get("is_staff")==None else True
+            user.is_admin = False if request.POST.get("is_staff")==None else True
+            user.is_superuser = False if request.POST.get("is_staff")==None else True
             user.save()
             sqliteConnection = sqlite3.connect(r"C:\Users\ACER\AI\sum_txt\MLnews\db.sqlite3")
             cursor = sqliteConnection.cursor()

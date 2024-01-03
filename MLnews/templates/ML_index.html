@@ -106,7 +106,7 @@
           <li><a class="join-button" href="{% url 'signup' %}">Sign up</a></li>
           {% endif %}
           {% if user.is_superuser %}
-          <li><a class="login-button" href="{% url 'dashboard' %}">dashboard</a></li>
+          <li><a class="login-button" href="{% url 'dashboard' %}">Dashboard</a></li>
           {% endif %}
       </ul>
   </nav>
@@ -181,7 +181,7 @@
             <section class="msger" style="">
                 <header class="msger-header">
                   <div class="msger-header-title">
-                    <i class="fas fa-bug"></i> Chatbot <i class="fas fa-bug"></i>
+                    Chatbot
                     <i class="fa-solid fa-xmark" onclick="closeForm()" style="float: right;"></i>
                   </div>
                 </header>

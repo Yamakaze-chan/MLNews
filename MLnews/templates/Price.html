@@ -60,7 +60,7 @@
                 <li><a class="join-button" href="{% url 'signup' %}">Sign up</a></li>
                 {% endif %}
                 {% if user.is_superuser %}
-                <li><a class="login-button" href="{% url 'dashboard' %}">dashboard</a></li>
+                <li><a class="login-button" href="{% url 'dashboard' %}">Dashboard</a></li>
                 {% endif %}
             </ul>
         </nav>
@@ -102,8 +102,8 @@
                 <button class="button" onclick="active_nav_stock()">Chứng khoán</button>
             </div>
         </div>
-        <div class="content">
-            <iframe src="./Change_currency"  scrolling="no" id="frame_content"></iframe>
+        <div class="content" style="height: calc(100vh - 170px);">
+            <iframe src="./Change_currency"  id="frame_content"></iframe>
         </div>
             <!--iframe src="https://www.vietcombank.com.vn/KHCN/Cong-cu-tien-ich/Ty-gia"height="500" width="100%" title="Iframe Example"></iframe-->
                 <!-- Here a loader is created which

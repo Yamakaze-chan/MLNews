@@ -38,7 +38,7 @@ function openForm() {
                 </div>
                 <div class="col">
                     <div class="read_more"><button class="up"><a href=${json_data.guid}><text>Đọc tiếp</text><i class="fa-solid fa-arrow-right fa-sm"></i></button></a></div>
-                    <div class="read_more"><button class="up" onclick="sum_txt(${"\"" + json_data.guid+"\""})"><text>Tóm tắt nội dung</text></button></div>
+                    <div class="read_more"><button class="up" onclick="sum_txt(${"\'" + json_data.guid+"\'"})"><text>Tóm tắt nội dung</text></button></div>
                     <div class="watch_later"><button class="up" onclick="remove_watch_later(\'${json_data.guid}\')"><text >Xóa xem sau</text><i class="fa-regular fa-clock fa-sm" ></i></button></div>
                 </div>
             </div>

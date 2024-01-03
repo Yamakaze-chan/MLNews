@@ -98,7 +98,7 @@ function Load_content(URL){
     {
       let datetime = new Date(data_json[json_item].Publish_Date);
       console.log(typeof(datetime));
-      let dateFormat = datetime.getHours() + ":" + (datetime.getMinutes() < 10 ? '0' : '') + datetime.getMinutes() + " "+ datetime.getDate() + "/" +datetime.getMonth() + "/" +datetime.getFullYear();
+      let dateFormat = datetime.getHours() + ":" + (datetime.getMinutes() < 10 ? '0' : '') + datetime.getMinutes() + " "+ datetime.getDate() + "/" +(datetime.getMonth()+1) + "/" +datetime.getFullYear();
         let html =`
         <div class="row news">
             <div class="col-4 news_assets">
@@ -215,7 +215,7 @@ function Load_content_searching(URL, keyword){
       let datetime = new Date(data_json[json_item].Publish_Date);
       //console.log(typeof(datetime));
       console.log(typeof(data_json[json_item].Guid))
-      let dateFormat = datetime.getHours() + ":" + (datetime.getMinutes() < 10 ? '0' : '') + datetime.getMinutes() + ", "+ datetime.getDate() + "/" +datetime.getMonth() + "/" +datetime.getFullYear();
+      let dateFormat = (datetime.getHours() < 10 ? '0' : '') + datetime.getHours() + ":" + (datetime.getMinutes() < 10 ? '0' : '') + datetime.getMinutes() +" "+ ((datetime.getDate())<10?"0"+(datetime.getDate()):(datetime.getDate()) ) + "/" +((datetime.getMonth()+1)<10?"0"+(datetime.getMonth()+1):(datetime.getMonth()+1) )+ "/" +datetime.getFullYear();
         let html =`
         <div class="row news">
             <div class="col-4 news_assets">
@@ -226,7 +226,7 @@ function Load_content_searching(URL, keyword){
                     </div>
                 <div class="col news_icons">
                     <ul class="row list_icons">
-                        <li class="col icon" ><a onclick="return Share_news(\"${data_json[json_item].Guid}\")"><i class="fa-solid fa-share fa-xl"></i></a></li>
+                        <li class="col icon" ><a onclick="return Share_news(\'${data_json[json_item].Guid}\')"><i class="fa-solid fa-share fa-xl"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -239,7 +239,7 @@ function Load_content_searching(URL, keyword){
                 </div>
                 <div class="col">
                     <div class="read_more"><button class="up"><a href=${data_json[json_item].Guid}><text>Đọc tiếp</text><i class="fa-solid fa-arrow-right fa-sm"></i></button></a></div>
-                    <div class="read_more"><button class="up" onclick="sum_txt(${"\"" + data_json[json_item].Guid+"\""})"><text>Tóm tắt nội dung</text></button></div>
+                    <div class="read_more"><button class="up" onclick="sum_txt(${"\'" + data_json[json_item].Guid+"\'"})"><text>Tóm tắt nội dung</text></button></div>
                     <div class="watch_later"><button class="up" onclick="Watch_later(${"\'" + data_json[json_item].Guid.toString() + "\'"}, ${"\'" + data_json[json_item].Image_content.toString().replaceAll("\'","\\'") + "\'"}, ${"\'" + data_json[json_item].Title.toString().replaceAll("\'","\\'") + "\'"}, ${"\'" + dateFormat.toString() + "\'"}, ${"\'" + data_json[json_item].Image.toString() + "\'"})"><text >Xem sau</text><i class="fa-regular fa-clock fa-sm" ></i></button></div>
                 </div>
             </div>
@@ -252,7 +252,7 @@ function Load_content_searching(URL, keyword){
 function filterIt(arr, searchKey) {
   return_list = []
   arr.forEach((element) => {
-    if(element.Title.includes(searchKey) || element.Image_content.includes(searchKey))
+    if(element.Title.includes(searchKey))
     {
       return_list.push(element)
     }
